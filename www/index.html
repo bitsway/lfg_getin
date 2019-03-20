@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<!--HTML5 doctype-->
+<html>
+
+<head>
+
+    <title>M-Reporting</title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, minimal-ui"> 
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" type="text/css" href="build/icons.css" />
+
+    <link rel="stylesheet" type="text/css" href="build/af.ui.css" />
+
+     <script type="text/javascript" charset="utf-8" src="lib/jquery.min.js"></script>
+    <script src="jquery.panzoom.js"></script>
+    <script src="jquery.mousewheel.js"></script>
+    <script type="text/javascript" charset="utf-8" src="lib/fastclick.js"></script>
+    <script type="text/javascript" charset="utf-8" src="src/af.shim.js"></script>
+    <script type="text/javascript" charset="utf-8" src="src/af.ui.js"></script>
+
+
+    <script src="src/af.desktopBrowsers.js"></script>
+    <script type="text/javascript" charset="utf-8" src="src/af.actionsheet.js"></script>
+    <script type="text/javascript" charset="utf-8" src="src/af.animation.js"></script>
+    <script type="text/javascript" charset="utf-8" src="src/af.touchEvents.js"></script>
+    <script type="text/javascript" charset="utf-8" src="src/af.popup.js"></script>
+    <script type="text/javascript" charset="utf-8" src="src/af.drawer.js"></script>
+    <script type="text/javascript" charset="utf-8" src="src/af.toast.js"></script>
+    <script type="text/javascript" charset="utf-8" src="src/af.animateheader.js"></script>
+    <script type="text/javascript" charset="utf-8" src="src/af.splashscreen.js"></script>
+    <script type="text/javascript" charset="utf-8" src="src/af.swipereveal.js"></script>
+    <script type="text/javascript" charset="utf-8" src="src/af.lockscreen.js"></script>
+	
+     <script src="survey.js"></script>
+     <script type="text/javascript">
+function MM_jumpMenu(targ,selObj,restore){ //v3.0
+  eval(targ+".location='"+selObj.options[selObj.selectedIndex].value+"'");
+  if (restore) selObj.selectedIndex=0;
+}
+     </script>
+	 <style>
+		.bgc{
+			color:red;
+		}
+		/********** jahangirEditedStart16Feb css ***************/
+		#imgStyle img{
+			border: 3px solid #ffffff;
+			border-radius: 5px;
+			width:56px !important;
+			height:70px !important;
+		}
+		section { text-align: center; margin: 50px 0 0 0; }
+      .panzoom-parent { border: 2px solid #333; }
+      .panzoom-parent .panzoom { border: 2px dashed #666; }
+      .buttons { margin: 40px 0 0; }
+	  
+	  #users ul{margin:50px auto auto auto; padding:0; list-style:none}
+	  #users ul li {
+			border-bottom: 1px dashed #0088D1 !important;
+			overflow: hidden;
+			padding: 10px 0px 0px 0px;
+		}
+    #list th{
+       background-color: #ddd;
+    }
+    #list tr:nth-child(odd) {
+      background-color: #d1dde4;
+    }
+
+    #sub_btn input{
+      width:99%;
+      height:45px;
+      background-color:#09C; 
+      color:#FFF; 
+      font-size:20px;
+      border: 2px solid #0088d1
+    }
+
+		/********** jahangirEditedEnd16Feb css ***************/
+	 </style>
+
+</head>
+<body>
+  <div id="splashscreen" class='ui-loader heavy'>M-Reporting<br><br>
+    <span >
+      <img style="" width="50px;" src="loading.gif" alt="">
+    </span>
+      <h1>Starting ......</h1>
+  </div>
+
+  <!--  //============Login page Start-->
+  <div class="view" id="loginView">
+    <div class="pages">
+      <header>
+        <h1 style="font-size:18px; font-weight:normal; color:#F8F8F8">Login</h1>
+      </header> 
+      <div class="panel" id="login" style="background-color:#c8e8e8">
+        <br><br><br><br>
+        <div id="error_login" style="color:#C00"></div> 
+        <input name="error_logintext" id="error_logintext"  type="hidden" placeholder="CID" value=""> 
+        <div class="input-group" >
+          <form style="background-color:#c8e8e8">   
+            <input name="cid" id="cid"  type="text" placeholder="CID" value="">     
+            <input name="user_id" id="user_id"   type="text" placeholder="User ID" value="">
+            <input type="number" name="user_pass" id="user_pass"  placeholder="Password" value="">
+          </form>           
+        </div>
+        <input type="submit" id="loginButton" onClick="lafarge_app();new_ps()"  style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="     Sync     "   /></br></br></br>
+        <div align="center"><img id="wait_image_login" style="" width="50px;" src="loading.gif" alt=""></div>
+      </div>
+    </div>
+    <footer>
+		  <a onClick="homePage()" class="icon home" ></a>
+      <a href="#imagePage"></a>
+    </footer>
+  </div>
+
+      
+<!--//==============================Image Page=================-->
+      
+  <div class="view" id="pageHomeView">
+    <div class="pages">
+      <header>
+        <h1 style="text-align:center;width: 100%;height: auto;color: #fff;padding: 10px; margin: 0px;">M-Reporting-B01</h1>
+        <a data-role="button"  onClick="login_page()"  ><img src="key.png" style="width:35px;height:35px;  padding-top:10px; top: 0px;right: 2px; padding-left: 5px;" ></a>
+      </header>
+      <div class="panel" id="pageHome" style="background-color:#c8e8e8"></br></br></br></br>
+        <div id="error_image" style="color:#C00"></div> 
+        <div class="input-group">
+          <table width="100%" border="0" >
+            <tr>
+              <td style="background-color:#09C; ">
+                  <div id="link_button"  align="center"  style="width:100%; background-color:#09C; height:auto;padding: 10px; color:#fff; font-size:20px;font-weight: bold; " >
+
+                    <p onClick="get_in();" >GET IN</p>
+
+                  </div> 
+              </td>
+            </tr>
+            <tr>
+              <td style="background-color:#09C; ">
+                  <div id="link_button"   align="center"  style="width:100%; background-color:#09C; height:auto;padding:10px; color:#fff; font-size:20px;font-weight: bold; " >
+
+                    <p onClick="get_out();">GET OUT</p>
+                  </div> 
+              </td>
+            </tr>
+            <tr>
+              <td style="background-color:#09C; ">
+                  <div id="link_button"   align="center"  style="width:100%; background-color:#09C; height:auto;padding:10px; color:#fff; font-size:20px;font-weight: bold; " >
+
+                    <p onClick="get_in_out_list();">LISTING</p>
+                  </div> 
+              </td>     
+            </tr>
+            <tr>
+              <td style="background-color:#09C; ">
+                  <div id="link_button"   align="center"  style="width:100%; background-color:#09C; height:auto;padding:10px; color:#fff; font-size:20px;font-weight: bold; " >
+
+                    <p>CANCEL</p>
+                  </div> 
+              </td>
+            </tr>
+            <tr>
+              <td style="background-color:#09C; ">
+                  <div id="link_button"   align="center"  style="width:100%; background-color:#09C; height:auto;padding:10px; color:#fff; font-size:20px;font-weight: bold; " >
+
+                    <p>EXIT</p>
+                  </div> 
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <footer>
+    	<a href="#" class="icon key" onclick="$.afui.drawer.show('#left','left','push')"></a>
+      <a href="#"  onclick="$.afui.drawer.show('#right','right','push')"><img style="height:30px; width:30px" src="menu.png"></a>
+    </footer>
+  </div>
+
+  <div class="view" id="get_Page_inView">
+    <div class="pages">
+      <header style="height:50px">
+        <h1 style="font-size:18px; font-weight:normal; color:#F8F8F8">Gate In-Register</h1>
+        <img src="icon-arrow-bak.png" style="margin-top: 8px" width="30" height="30" alt="Back" onClick="back_page_get()">
+      </header> 
+      <div class="panel" id="get_Page_in" style="background-color:#c8e8e8">
+        </br></br></br></br></br>
+        <div id="myerror_get" style="color:#C00"></div> 
+        <div class="input_get">
+
+          <!-- <input type="text" id="test_n" name="test_n"  style="width:100%;height:35px;background: #f7ffff;border-radius:3px;border:1px solid #a4becc" value=""   /> -->
+            <table width="100%" border="0" cellspacing="0"  id="tbl_get"  style="border-color:#999;background-color:#c8e8e8" >
+              <tr>
+                <td width="30%"><b>ড্রাইভার এর নাম  :</b></td>
+                <td width="70%"><input type="text" id="getIn_drvName" name="getIn_drvName"  style="width:100%;height:35px;background: #f7ffff;border-radius:3px;border:1px solid #a4becc" value=""   /></td>
+              </tr>
+              <tr>
+
+                <td width="30%"><b>ট্রাক এর নাম্বার  :</b></td>
+                <td width="70%"><input type="text" id="getIn_truckNo" name="getIn_truckNo"  style="width:100%;height:35px;background: #f7ffff;border-radius:3px;border:1px solid #a4becc" value=""   /></td>
+              </tr>
+              <tr>
+
+                <td width="30%"><b>লাইসেন্স নাম্বার  :</b></td>
+                <td>
+                  <table >
+                    <tr>
+                       <td width="25%">
+                      <select id="getIn_linc1" name="getIn_linc1" style="width:100%;height:35px;padding:0px 3px;background: #f7ffff;border-radius:3px;border:1px solid #a4becc">
+                        <option value="Select type"></option>
+                        <option value="111">১০১</option>
+                        <option value="222">২০১</option>
+                        <option value="333">৩০১</option>
+                      </select>
+                </td>
+                <td width="25%">
+                  <select id="getIn_linc2" name="getIn_linc2" style="width:100%;height:35px;background: #f7ffff;padding:0px 3px;border-radius:3px;border:1px solid #a4becc">
+                    <option value="Select type"></option>
+                    <option value="111">১০১১</option>
+                    <option value="222">২০০২</option>
+                    <option value="333">৩০০২</option>
+                  </select>
+                </td>
+                <td width="10%">
+                  <input id="getIn_linc3" name="getIn_linc3" type="text"  style="width:100%;height:35px;background: #f7ffff;border-radius:3px;border:1px solid #a4becc" value=""   />
+                </td>
+                <td width="1%">&nbsp;&nbsp;<span>-</span></td>
+                <td width="10%">
+                  <input id="getIn_linc4" name="getIn_linc4" type="text"  style="width:100%;height:35px;background: #f7ffff;border-radius:3px;border:1px solid #a4becc" value=""   />
+                </td>
+                    </tr>
+                  </table>
+
+                </td>
+               
+              </tr>
+
+            </table>
+            <br>
+            <table width="100%" cellspacing="0"  id="tbl_get"  style="border-color:#999;background-color:#c8e8e8" >
+              <tr >
+                <th style="border:1px solid #a1cad6;height:25px">নং</th>
+                <th style="border:1px solid #a1cad6;height:25px">চেকপয়েন্ট </th>
+          
+                <th style="border:1px solid #a1cad6;height:25px">হ্যাঁ / না</th> 
+
+              </tr>
+              <tr >
+                <td width="10%" style="border:1px solid #a1cad6;height:25px">&nbsp;১</td>
+                <td width="80%" style="border:1px solid #a1cad6;height:25px">&nbsp;ড্রাইভার এর লাইসেন্স চেক করা হয়েছে ?</td>
+                <td width="10%" style="border:1px solid #a1cad6;height:25px">
+                  <input type="checkbox" style="display: block;margin-left:5px" id="getIn_driv_lic_check" name="getIn_driv_lic_check" value="">
+                </td>
+
+              </tr>
+              <tr>
+                <td width="10%" style="border:1px solid #a1cad6;height:25px">&nbsp;১.১</td>
+                <td width="80%" style="border:1px solid #a1cad6;height:25px">&nbsp;লাইসেন্স ঠিক আছে ?</td>
+                <td width="10%" style="border:1px solid #a1cad6;height:25px">
+                  <input type="checkbox" style="display: block;margin-left:5px" id="getIn_lic_check" name="getIn_lic_check" value="">
+                </td>
+
+              </tr>
+              <tr>
+                <td width="10%" style="border:1px solid #a1cad6;height:25px">&nbsp;২</td>
+                <td width="80%" style="border:1px solid #a1cad6;height:25px">&nbsp;সেফটি ব্রিফিং দেয়া হয়েছে ? <br>
+
+                  <ul style="list-style: none;padding:3px">
+                    <li  style="padding: 3px">সাইট এর ভিতরে সর্বোচ্চ গতিসীমা ১০ কিমি/ঘন্টা</li>
+                    <li  style="padding: 3px">গাড়ি চালানো অবস্থায় মোবাইল ফোন ব্যাবহার করা নিষেধ</li>
+                    <li  style="padding: 3px;">সিটবেল্ট বাঁধুন</li>
+                    <li  style="padding: 3px">হেডলাইট অন রাখুন</li>
+                    <li  style="padding: 3px">পিপিই পরিধান করুন</li>
+                  </ul>
+                </td>
+               <td width="10%" style="border:1px solid #a1cad6;height:25px">
+                  <input type="checkbox" style="display: block;margin-left:5px" id="getIn_safty_brf" name="getIn_safty_brf" value="">
+                </td>
+
+              </tr>
+              <tr>
+                <td width="10%" style="border:1px solid #a1cad6;height:25px">&nbsp;৩</td>
+                <td width="80%" style="border:1px solid #a1cad6;height:25px">&nbsp;সকল টায়ার এর অবস্থা ঠিক আছে ?</td>
+                <td width="10%" style="border:1px solid #a1cad6;height:25px">
+                  <input type="checkbox" style="display: block;margin-left:5px" id="getIn_tire" name="getIn_tire" value="">
+                </td>
+
+              </tr>
+              <tr>
+                <td width="10%" style="border:1px solid #a1cad6;height:25px">&nbsp;৪</td>
+                <td width="80%" style="border:1px solid #a1cad6;height:25px">&nbsp;হেড লাইট, ব্রেক লাইট ও ব্যাক লাইট ঠিক আছে ?</td>
+                <td width="10%" style="border:1px solid #a1cad6;height:25px">
+                  <input type="checkbox" style="display: block;margin-left:5px" id="getIn_ligth" name="getIn_ligth" value="">
+                </td>
+
+              </tr>
+              <tr>
+                <td width="10%" style="border:1px solid #a1cad6;height:25px">&nbsp;৫</td>
+                <td width="80%" style="border:1px solid #a1cad6;height:25px">&nbsp;হর্ন ঠিক আছে ?</td>
+                <td width="10%" style="border:1px solid #a1cad6;height:25px">
+                  <input type="checkbox" style="display: block;margin-left:5px" id="getIn_horn" name="getIn_horn" value="">
+                </td>
+
+              </tr>
+              <tr>
+                <td width="10%" style="border:1px solid #a1cad6;height:25px">&nbsp;৬</td>
+                <td width="80%" style="border:1px solid #a1cad6;height:25px">&nbsp;উইন্দশিল্ড ঠিক আছে ?</td>
+                <td width="10%" style="border:1px solid #a1cad6;height:25px">
+                  <input type="checkbox" style="display: block;margin-left:5px" id="getIn_windshild" name="getIn_windshild" value="">
+                </td>
+
+              </tr>
+              <tr>
+                <td width="10%" style="border:1px solid #a1cad6;height:25px">&nbsp;৭</td>
+                <td width="80%" style="border:1px solid #a1cad6;height:25px">&nbsp;লুকিং গ্লাস ঠিক আছে ?</td>
+               <td width="10%" style="border:1px solid #a1cad6;height:25px">
+                  <input type="checkbox" style="display: block;margin-left:5px" id="getIn_glass" name="getIn_glass" value="">
+                </td>
+
+              </tr>
+              <tr>
+                <td width="10%" style="border:1px solid #a1cad6;height:25px">&nbsp;৮</td>
+                <td width="80%" style="border:1px solid #a1cad6;height:25px">&nbsp;ওয়াইপার ব্লেড ঠিক আছে ?</td>
+                <td width="10%" style="border:1px solid #a1cad6;height:25px">
+                  <input type="checkbox" style="display: block;margin-left:5px" id="getIn_wiper" name="getIn_wiper" value="">
+                </td>
+
+              </tr>
+              <tr>
+                <td width="10%" style="border:1px solid #a1cad6;height:25px">&nbsp;৯</td>
+                <td width="80%" style="border:1px solid #a1cad6;height:25px">&nbsp;পিপিই দেয়া হয়েছে ?<br>
+                  <select id="ppe_getIn" name="ppe_getIn" style="width:30%;height:35px;background: #f7ffff;padding:2px;margin:5px;border-radius:3px;border:1px solid #a4becc">
+                    <option value="চুক্তিবদ্ধ">চুক্তিবদ্ধ</option>
+                    <option value="চুক্তিবদ্ধ1">চুক্তিবদ্ধ1</option>
+                  </select>
+                </td>
+                <td width="10%" style="border:1px solid #a1cad6;height:25px"></td>
+              </tr>
+            </table>
+            <br>
+            <br>
+
+            <!-- <img id="get_in_wimg" style="width:50px" src="loading.gif" alt="">    -->
+                <div id="error_getin_page" style="color:#C00"></div>  
+              <div id="sub_btn" style="color:#C00">
+                  
+                <input type="submit" id="getIn_subBtn" name="getIn_subBtn"  onClick="get_in_submit();" value="Submit"   />
+
+              </div>
+        </div>
+      </div> 
+    </div>
+    <footer>
+      <a onClick="homePage()" class="icon home" >Home</a>
+    </footer>
+  </div>  
+
+  <div class="view" id="get_Page_outView">
+    <div class="pages">
+      <header style="height:50px">
+
+        <h1 style="font-size:18px; font-weight:normal; color:#F8F8F8">Get Out</h1>
+        
+        <img src="icon-arrow-bak.png" style="margin-top: 8px" width="30" height="30" alt="Back" onClick="back_page_get()">
+      </header> 
+
+      <div class="panel" id="get_Page_out" style="background-color:#c8e8e8">
+        </br></br></br></br></br>
+        <div id="myerror_get" style="color:#C00"></div> 
+        <div class="input_get">
+          <!-- <input type="text" id="test_on" name="test_on"  style="width:100%;height:35px;background: #f7ffff;border-radius:3px;border:1px solid #a4becc" value=""   /> -->
+            <table width="100%" border="0" cellspacing="0"  id="tbl_get"  style="border-color:#999;background-color:#c8e8e8" >
+              <tr>
+
+                <td width="30%"><b>তারিখ ও সময় :</b></td>
+                <td width="70%"><input type="date" id="getOut_date" name="getOut_date" style="width:100%;height:35px;background: #f7ffff;border-radius:3px;border:1px solid #a4becc" value=""   /></td>
+              </tr>
+              <tr>
+
+                <td width="30%"><b>লাইসেন্স নাম্বার  :</b></td>
+                <td width="70%"><input type="text" id="getOut_lic_no" name="getOut_lic_no" style="width:100%;height:35px;background: #f7ffff;border-radius:3px;border:1px solid #a4becc" value=""   /></td>
+              </tr>
+              <tr>
+                <td width="30%"><b>ড্রাইভার এর নাম  :</b></td>
+                <td width="70%"><input type="text" id="getOut_drv_name" name="getOut_drv_name" style="width:100%;height:35px;background: #f7ffff;border-radius:3px;border:1px solid #a4becc" value=""   /></td>
+              </tr>
+              <tr>
+
+                <td width="30%"><b>ট্রাক এর নাম্বার :</b></td>
+                <td width="70%"><input type="text" id="getOut_trc_no" name="getOut_trc_no" style="width:100%;height:35px;background: #f7ffff;border-radius:3px;border:1px solid #a4becc" value=""   /></td>
+              </tr>
+             
+
+            </table>
+            <br>
+             <table width="100%" cellspacing="0"  id="tbl_get"  style="border-color:#999;background-color:#c8e8e8" >
+              
+              <tr>
+                <td></td>
+                <td align="center"><h2 style="margin:0px;padding:0px;color:#000" > ট্রাক গেট আউট চেকলিস্ট </h2></td>
+                <td></td>
+              </tr>
+            </table>
+            <br>
+            <table width="100%" cellspacing="0"  id="tbl_get"  style="border-color:#999;background-color:#c8e8e8" >
+              
+              
+              <tr >
+                 <th style="border:1px solid #a1cad6;height:25px">নং</th>
+                <th style="border:1px solid #a1cad6;height:25px">চেকপয়েন্ট </th>
+                <th style="border:1px solid #a1cad6;height:25px">হ্যাঁ / না</th>
+
+              </tr>
+              <tr >
+                <td width="10%" style="border:1px solid #a1cad6;height:25px">&nbsp;১</td>
+                <td width="80%" style="border:1px solid #a1cad6;height:25px">&nbsp;পিপিই ফেরত নেয়া হয়েছে ?<br>
+				          <ul style="list-style: none;padding:3px">
+                    <li  style="padding: 3px">১.ক সেফটি শ্যূ</li>
+                    <li  style="padding: 3px">১.খ হাই ভিসিবিলিটি ভেস্ট</li>
+                    <li  style="padding: 3px">১.গ সেফটি গগলস</li>
+                    <li  style="padding: 3px">১.ঘ হার্ড হ্যাট</li>
+                  </ul>
+				        </td>
+                <td width="10%" style="border:1px solid #a1cad6;height:25px">
+                  <input type="checkbox" style="display: block;margin-left:5px" id="ppe_out_yn" name="ppe_out_yn" value=""> 
+                </td>
+              </tr>
+			  <tr>
+			  <td >&nbsp;</td>
+                <td >&nbsp;</td>
+                <td >&nbsp;</td>
+				</tr>
+        <tr>
+          <td></td>
+        </tr>
+       </table><br><br>
+
+        <div id="error_getout_page" style="color:#C00"></div>
+          <table width="100%" border="0" cellspacing="0"  id="tbl_get" >
+            <tr>
+              <td> 
+                <div id="sub_btn" style="color:#C00">
+            
+                  <input type="submit" id="getOut_subBtn" name="getOut_subBtn"  onClick="get_out_submit();" value="Submit"   />
+
+                </div>
+              </td>
+
+              <td > 
+                <div id="sub_btn" style="color:#C00">
+            
+                  <input type="submit" id="getOut_cancel" name="getOut_cancel"  onClick="get_cancel();" value="Cancel"   />
+
+                </div>
+              </td>
+            </tr>
+          </table>
+           <!-- <img id="get_out_wimg" style="width:50px" src="loading.gif" alt="">   -->    
+        </div>
+      </div> 
+    </div>
+    <footer>
+      <a onClick="homePage()" class="icon home" >Home</a>
+    </footer>
+  </div>  
+
+
+
+  <div class="view" id="get_Page_in_outlistView">
+    <div class="pages">
+      <header style="height:50px">
+
+        <h1 style="font-size:18px; font-weight:normal; color:#F8F8F8">LHBD Get In/Out - Listing</h1>
+        
+        <img src="icon-arrow-bak.png" style="margin-top: 8px" width="30" height="30" alt="Back" onClick="back_page_get()">
+      </header> 
+      <div class="panel" id="get_Page_in_outlist" style="background-color:#c8e8e8">
+        </br></br></br></br></br>
+        <div id="myerror_get" style="color:#C00"></div> 
+        <div class="input_get">
+            <table width="100%" border="0" cellspacing="0"  id="tbl_get"  style="border-color:#999;background-color:#c8e8e8" >
+              
+
+              <tr>
+
+                 <fieldset>
+                  <legend><b>Search:</b></legend>
+                 &nbsp;  Name: <input type="date" style="width:30%;height:35px;background: #f7ffff;border-radius:3px;border:1px solid #a4becc">
+
+                  &nbsp; Status:<select style="width:20%;height:35px;background: #f7ffff;padding:2px;margin:5px;border-radius:3px;border:1px solid #a4becc">
+                    <option value="Active">Active</option>
+                    <option value="Inactive">Inactive</option>
+
+                  </select> &nbsp;<input type="submit" onclick="reload_function()" value="Refresh" style="width:20%;height:35px;background: #f7ffff;border-radius:3px;border:1px solid #a4becc">
+                  
+                 
+                 </fieldset>
+               
+              </tr>
+            </table>
+            
+            <br>
+            <fieldset style="padding: 4px">
+                  <legend><b>Listing:</b></legend><br>
+            <table width="100%" cellspacing="0" id="list" border="1px solid #a1cad6" id="tbl_get"  style="border-color:#999;background-color:#c8e8e8" >
+              
+              
+              <tr >
+                <th style="border:1px solid #a1cad6;height:25px">No</th>
+                <th style="border:1px solid #a1cad6;height:25px">Driver Name</th>
+                <th style="border:1px solid #a1cad6;height:25px">Vehicle</th>
+                <th style="border:1px solid #a1cad6;height:25px">Date Time</th>
+                <th style="border:1px solid #a1cad6;height:25px">Time Elapsed</th>
+
+              </tr>
+              
+              <tr>
+                 <td style="border:1px solid #a1cad6;height:25px">&nbsp;</td>
+                 <td style="border:1px solid #a1cad6;height:25px">&nbsp;</td>
+                 <td style="border:1px solid #a1cad6;height:25px">&nbsp;</td>
+                 <td style="border:1px solid #a1cad6;height:25px">&nbsp;</td>
+                 <td style="border:1px solid #a1cad6;height:25px">&nbsp;</td>
+                
+              </tr>
+              
+              <tr>
+                 <td style="border:1px solid #a1cad6;height:25px">&nbsp;</td>
+                 <td style="border:1px solid #a1cad6;height:25px">&nbsp;</td>
+                 <td style="border:1px solid #a1cad6;height:25px">&nbsp;</td>
+                 <td style="border:1px solid #a1cad6;height:25px">&nbsp;</td>
+                 <td style="border:1px solid #a1cad6;height:25px">&nbsp;</td>
+                
+              </tr>
+              
+              <tr>
+                 <td style="border:1px solid #a1cad6;height:25px">&nbsp;</td>
+                 <td style="border:1px solid #a1cad6;height:25px">&nbsp;</td>
+                 <td style="border:1px solid #a1cad6;height:25px">&nbsp;</td>
+                 <td style="border:1px solid #a1cad6;height:25px">&nbsp;</td>
+                 <td style="border:1px solid #a1cad6;height:25px">&nbsp;</td>
+                
+              </tr>
+              
+              <tr>
+                 <td style="border:1px solid #a1cad6;height:25px">&nbsp;</td>
+                 <td style="border:1px solid #a1cad6;height:25px">&nbsp;</td>
+                 <td style="border:1px solid #a1cad6;height:25px">&nbsp;</td>
+                 <td style="border:1px solid #a1cad6;height:25px">&nbsp;</td>
+                 <td style="border:1px solid #a1cad6;height:25px">&nbsp;</td>
+                
+              </tr>
+              
+              <tr>
+                 <td style="border:1px solid #a1cad6;height:25px">&nbsp;</td>
+                 <td style="border:1px solid #a1cad6;height:25px">&nbsp;</td>
+                 <td style="border:1px solid #a1cad6;height:25px">&nbsp;</td>
+                 <td style="border:1px solid #a1cad6;height:25px">&nbsp;</td>
+                 <td style="border:1px solid #a1cad6;height:25px">&nbsp;</td>
+                
+              </tr>
+              
+              <tr>
+                 <td style="border:1px solid #a1cad6;height:25px">&nbsp;</td>
+                 <td style="border:1px solid #a1cad6;height:25px">&nbsp;</td>
+                 <td style="border:1px solid #a1cad6;height:25px">&nbsp;</td>
+                 <td style="border:1px solid #a1cad6;height:25px">&nbsp;</td>
+                 <td style="border:1px solid #a1cad6;height:25px">&nbsp;</td>
+                
+              </tr>
+              
+              <tr>
+                 <td style="border:1px solid #a1cad6;height:25px">&nbsp;</td>
+                 <td style="border:1px solid #a1cad6;height:25px">&nbsp;</td>
+                 <td style="border:1px solid #a1cad6;height:25px">&nbsp;</td>
+                 <td style="border:1px solid #a1cad6;height:25px">&nbsp;</td>
+                 <td style="border:1px solid #a1cad6;height:25px">&nbsp;</td>
+                
+              </tr>
+
+            </table>
+          </fieldset>
+
+        </div>
+      </div> 
+    </div>
+    <footer>
+      <a onClick="homePage()" class="icon home" >Home</a>
+    </footer>
+  </div>  
+
+
+
+
+
+
+
+<!-- 
+		 <nav id="left"  style="z-index:5; background-color:#FFF;" >
+			<header align="left"></header>
+      <div class="pages" style="height:100%">
+      </br></br></br>                   
+       <div onClick="page_login()" align="center" > <img style="height:50px; width:50px" src="key.png"></div>
+         </br> </br> </br> </br>  </br> </br> </br> </br> </br> </br>  </br> </br></br> </br> </br> </br>  </br> </br>
+         <div onClick="exit()" align="center"> <img style="height:30px; width:30px" src="exit.png"></div>
+          <br>
+
+          </div>
+        </nav>
+        <nav id="right" style="z-index:5; background-color:#FFF">
+            <div class="view active" id="navView2">
+                <header>
+                    <h1></h1>
+                </header>
+                <br>
+                 <div onClick="page_promo_main()" align="center"> <img style="height:70px; width:70px" src="promo.png"></div>
+               </br></br>
+             <div onClick="page_stock_main()" align="center"> <img style="height:70px; width:70px" src="stock.png"></div>
+                </br></br>
+                 <div onClick="page_notice()" align="center"> <img style="height:70px; width:70px" src="notice.png"></div>
+            </div>
+        </nav> -->
+          
+           
+
+<!--==Link PAge==-->
+<!-- <div class="view" id="page_linkView">
+        <div class="pages">
+         <header style="height:70px">
+          <table width="100%" border="0">
+          <tr>
+            <td width="10%" align="left"></td>
+            <td align="center" style="font-size:18px; font-weight:normal; color:#F8F8F8">Link Path</td>
+            <td width="10%"  ></td> 
+          </tr>
+        </table>
+         
+         
+         
+         </header> 
+            <div class="panel" id="page_link" style="background-color:#c8e8e8">
+            </br></br></br></br></br>
+             <div id="myerror_page_link" style="color:#C00"></div> 
+              <div class="input-group">
+                 <td style="vertical-align:top; width:100%">
+                <ul class="list" id="page_link_lv" style="background-color:#c8e8e8">
+                        
+                        </ul>
+                 
+                 </td>
+                 </div>
+                   </div> 
+            </div>
+       
+        <footer>
+        
+    <table width="100%" border="0">
+  <tr>
+    <td align="left">  <a onClick="homePage()" class="icon left" ></a></td>
+     <td >&nbsp;</td>
+    <td width="40%" style="font-size:16px; color:#FFF"></td>
+  </tr>
+</table>	
+          
+           </footer>
+
+    </div>   --> 
+
+  
+<!--================================Prescriptio End=============   --> 
+ <script type="text/javascript" src="phonegap.js"></script>
+
+          
+              
+
+
+
+
+
+    
+    
+</body>
+
+</html>

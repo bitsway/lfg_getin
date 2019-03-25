@@ -43,14 +43,14 @@ var year = currentDate.getFullYear()
 //alert (parseInt(day))
 var today=  year + "-" + month + "-" + day
 localStorage.today=today;
-
+						
+						
 
 	//currentDate=2016-03-11
 	//localStorage.synced=''
 	//alert (today);
 	//alert (localStorage.synced);
 	if (localStorage.synced=='YES'){
-		
 		$("#cid").val(localStorage.cid);
 		$("#user_id").val(localStorage.user_id);
 		$("#user_pass").val(localStorage.user_pass);
@@ -315,11 +315,9 @@ function get_login() {
 	}
 function afterSync(){
 
-
 }
 
 function homePage() {
-
 	var currentDate = new Date()
 	var day = currentDate.getDate();if(parseInt(day)<9)	{day="0" + day};
 	var month = currentDate.getMonth() + 1;if(parseInt(month)<9){month="0" +month};
@@ -328,13 +326,15 @@ function homePage() {
 	var today=  year + "-" + month + "-" + day
 	localStorage.today=today;						
 
-
-	if (localStorage.synced=='YES'){
+	//if ((localStorage.synced=='YES') & (localStorage.sync_date==today)){
+	// if (localStorage.synced=='YES'){
+		
 		
 		$.afui.loadContent("#pageHome",true,true,'right');
-	}
+	// }
 	
-
+	//$("#error_login").html('');
+	//$.afui.loadContent("#pageHome",true,true,'right');
 }
 
 
@@ -345,7 +345,9 @@ function lafarge_app() {
 	//var  apipath_base_photo_dm='http://127.0.0.1:8000/kpl/syncmobile_417_new_ibn_newtest/dmpath'
 	
 	//var  apipath_base_photo_dm='http://127.0.0.1:8000/lafarge/syncmobile_lafarge/dmpath?CID='+localStorage.cid +'&HTTPPASS=e99business321cba'
-	var  apipath_base_photo_dm='http://w02.yeapps.com/lfg_getin/syncmobile_lafarge/dmpath?CID='+localStorage.cid +'&HTTPPASS=e99business321cba'			 	 
+	
+	var  apipath_base_photo_dm='http://w02.yeapps.com/lfg_getin/syncmobile_lafarge/dmpath?CID='+localStorage.cid +'&HTTPPASS=e99business321cba'
+				 	 
 	//alert(apipath_base_photo_dm)
 	
 	var user_id=$("#user_id").val();
@@ -401,7 +403,6 @@ function lafarge_app() {
 							localStorage.user_id=user_id;
 							localStorage.user_pass=user_pass;   		
 							localStorage.synced='NO'
-
 							
 							var currentDate = new Date()
 							var day = currentDate.getDate();if(day.length==1)	{day="0" +day};
@@ -436,7 +437,7 @@ function lafarge_app() {
 										afterSync()
 
 										localStorage.synccode=resultArray[1];
-										localStorage.synced='YES';
+										
 										$.afui.loadContent("#pageHome",true,true,'right');
 										
 									}//else failed
@@ -471,8 +472,8 @@ function get_in_submit() {
 	var getIn_linc3=$("#getIn_linc3").val();
 	var getIn_linc4=$("#getIn_linc4").val();
 
-	var getIn_driv_licns_check=($("#getIn_driv_licns_check").is(':checked') ? 1 : 0);
-	var getIn_licns_check=($("#getIn_licns_check").is(':checked') ? 1 : 0);
+	var getIn_driv_lic_check=($("#getIn_driv_lic_check").is(':checked') ? 1 : 0);
+	var getIn_lic_check=($("#getIn_lic_check").is(':checked') ? 1 : 0);
 	var getIn_safty_brf=($("#getIn_safty_brf").is(':checked') ? 1 : 0);
 	var getIn_tire=($("#getIn_tire").is(':checked') ? 1 : 0);
 	var getIn_ligth=($("#getIn_ligth").is(':checked') ? 1 : 0);
@@ -482,22 +483,14 @@ function get_in_submit() {
     var getIn_glass=($("#getIn_glass").is(':checked') ? 1 : 0);
     var getIn_wiper=($("#getIn_wiper").is(':checked') ? 1 : 0);
     var ppe_getIn=($("#ppe_getIn").is(':checked') ? 1 : 0);
-
-    var bulker=($("#bulker").is(':checked') ? 1 : 0);
-    var contrac_truck=($("#contrac_truck").is(':checked') ? 1 : 0);
-    var spot_truck=($("#spot_truck").is(':checked') ? 1 : 0);
-    var safety_shoe=($("#safety_shoe").is(':checked') ? 1 : 0);
-    var high_visibility=($("#high_visibility").is(':checked') ? 1 : 0);
-    var safety_goggles=($("#safety_goggles").is(':checked') ? 1 : 0);
-    var hard_hat=($("#hard_hat").is(':checked') ? 1 : 0);
 	
 	// getLocationInfo_ready()
 	
- var test_valn=$("#test_n").val(localStorage.base_url+'get_in_submit?cid='+localStorage.cid+'&user_id='+localStorage.user_id+'&user_pass='+localStorage.user_pass+'&getIn_drvName='+getIn_drvName+'&getIn_truckNo='+getIn_truckNo+'&getIn_linc1='+getIn_linc1+'&getIn_linc2='+getIn_linc2+'&getIn_linc3='+getIn_linc3+'&getIn_linc4='+getIn_linc4 +'&getIn_driv_licns_check='+getIn_driv_licns_check+'&getIn_licns_check='+getIn_licns_check+'&getIn_safty_brf='+getIn_safty_brf+'&getIn_tire='+getIn_tire+'&getIn_ligth='+getIn_ligth+'&getIn_horn='+getIn_horn +'&getIn_windshild ='+getIn_windshild+'&getIn_glass ='+getIn_glass+'&getIn_wiper ='+getIn_wiper+'&ppe_getIn ='+ppe_getIn+'&bulker='+bulker+'&contrac_truck='+contrac_truck+'&spot_truck='+spot_truck+'&safety_shoe='+safety_shoe+'&high_visibility='+high_visibility+'&safety_goggles='+safety_goggles+'&hard_hat='+hard_hat)
+	// var test_valn=$("#test_n").val(localStorage.base_url+'get_in_submit?cid='+localStorage.cid+'&user_id='+localStorage.user_id+'&user_pass='+localStorage.user_pass+'&getIn_drvName='+getIn_drvName+'&getIn_truckNo='+getIn_truckNo+'&getIn_linc1='+getIn_linc1+'&getIn_linc2='+getIn_linc2+'&getIn_linc3='+getIn_linc3+'&getIn_linc4='+getIn_linc4 +'&getIn_driv_lic_check='+getIn_driv_lic_check+'&getIn_lic_check='+getIn_lic_check+'&getIn_safty_brf='+getIn_safty_brf+'&getIn_tire='+getIn_tire+'&getIn_ligth='+getIn_ligth+'&getIn_horn ='+getIn_horn +'&getIn_windshild ='+getIn_windshild+'&getIn_glass ='+getIn_glass+'&getIn_wiper ='+getIn_wiper+'&ppe_getIn ='+ppe_getIn)
 		
-	// alert(localStorage.base_url+'get_in_submit?cid='+localStorage.cid+'&user_id='+localStorage.user_id+'&user_pass='+localStorage.user_pass+'&getIn_drvName='+getIn_drvName+'&getIn_truckNo='+getIn_truckNo+'&getIn_linc1='+getIn_linc1+'&getIn_linc2='+getIn_linc2+'&getIn_linc3='+getIn_linc3+'&getIn_linc4='+getIn_linc4 +'&getIn_driv_licns_check='+getIn_driv_licns_check+'&getIn_licns_check='+getIn_licns_check+'&getIn_safty_brf='+getIn_safty_brf+'&getIn_tire='+getIn_tire+'&getIn_ligth='+getIn_ligth+'&getIn_horn ='+getIn_horn +'&getIn_windshild ='+getIn_windshild+'&getIn_glass ='+getIn_glass+'&getIn_wiper ='+getIn_wiper+'&ppe_getIn ='+ppe_getIn)
+	// alert(localStorage.base_url+'get_in_submit?cid='+localStorage.cid+'&user_id='+localStorage.user_id+'&user_pass='+localStorage.user_pass+'&getIn_drvName='+getIn_drvName+'&getIn_truckNo='+getIn_truckNo+'&getIn_linc1='+getIn_linc1+'&getIn_linc2='+getIn_linc2+'&getIn_linc3='+getIn_linc3+'&getIn_linc4='+getIn_linc4 +'&getIn_driv_lic_check='+getIn_driv_lic_check+'&getIn_lic_check='+getIn_lic_check+'&getIn_safty_brf='+getIn_safty_brf+'&getIn_tire='+getIn_tire+'&getIn_ligth='+getIn_ligth+'&getIn_horn ='+getIn_horn +'&getIn_windshild ='+getIn_windshild+'&getIn_glass ='+getIn_glass+'&getIn_wiper ='+getIn_wiper+'&ppe_getIn ='+ppe_getIn)
 									// =============== novivo2019 start ================
-	$.ajax(localStorage.base_url+'get_in_submit?cid='+localStorage.cid+'&user_id='+localStorage.user_id+'&user_pass='+localStorage.user_pass+'&getIn_drvName='+getIn_drvName+'&getIn_truckNo='+getIn_truckNo+'&getIn_linc1='+getIn_linc1+'&getIn_linc2='+getIn_linc2+'&getIn_linc3='+getIn_linc3+'&getIn_linc4='+getIn_linc4 +'&getIn_driv_licns_check='+getIn_driv_licns_check+'&getIn_licns_check='+getIn_licns_check+'&getIn_safty_brf='+getIn_safty_brf+'&getIn_tire='+getIn_tire+'&getIn_ligth='+getIn_ligth+'&getIn_horn='+getIn_horn+'&getIn_windshild='+getIn_windshild+'&getIn_glass='+getIn_glass+'&getIn_wiper='+getIn_wiper+'&ppe_getIn='+ppe_getIn+'&bulker='+bulker+'&contrac_truck='+contrac_truck+'&spot_truck='+spot_truck+'&safety_shoe='+safety_shoe+'&high_visibility='+high_visibility+'&safety_goggles='+safety_goggles+'&hard_hat='+hard_hat,{
+	$.ajax(localStorage.base_url+'get_in_submit?cid='+localStorage.cid+'&user_id='+localStorage.user_id+'&user_pass='+localStorage.user_pass+'&getIn_drvName='+getIn_drvName+'&getIn_truckNo='+getIn_truckNo+'&getIn_linc1='+getIn_linc1+'&getIn_linc2='+getIn_linc2+'&getIn_linc3='+getIn_linc3+'&getIn_linc4='+getIn_linc4 +'&getIn_driv_lic_check='+getIn_driv_lic_check+'&getIn_lic_check='+getIn_lic_check+'&getIn_safty_brf='+getIn_safty_brf+'&getIn_tire='+getIn_tire+'&getIn_ligth='+getIn_ligth+'&getIn_horn ='+getIn_horn +'&getIn_windshild='+getIn_windshild+'&getIn_glass='+getIn_glass+'&getIn_wiper='+getIn_wiper+'&ppe_getIn='+ppe_getIn,{
 
 		type: 'POST',
 		timeout: 30000,
@@ -526,8 +519,8 @@ function get_in_submit() {
 				    $("#getIn_linc3").val('');
 				    $("#getIn_linc4").val('');
 
-				   	$("#getIn_driv_licns_check").val('');
-					$("#getIn_licns_check").val('');
+				   	$("#getIn_driv_lic_check").val('');
+					$("#getIn_lic_check").val('');
 					$("#getIn_safty_brf").val('');
 					$("#getIn_tire").val('');
 					$("#getIn_ligth").val('');
@@ -537,16 +530,6 @@ function get_in_submit() {
 				    $("#getIn_glass").val('');
 				    $("#getIn_wiper").val('');
 				    $("#ppe_getIn").val('');
-
-
-				    $("#bulker").val('');
-				    $("#contrac_truck").val('');
-				    $("#spot_truck").val('');
-				    $("#safety_shoe").val('');
-				    $("#high_visibility").val('');
-				    $("#safety_goggles").val('');
-				    $("#hard_hat").val('');
-
 
 					$("#error_getin_page").html(result_string)
 				}else{	
@@ -564,15 +547,15 @@ function get_out_submit() {
 	$("#get_out_wimg").show();
 	
 	var getOut_date=$("#getOut_date").val();
-	var getOut_licns_no=$("#getOut_licns_no").val();
+	var getOut_lic_no=$("#getOut_lic_no").val();
 
 	var getOut_drv_name=$("#getOut_drv_name").val();
 	var getOut_trc_no=$("#getOut_trc_no").val();
 	var ppe_out_yn= ($('#ppe_out_yn').is(':checked') ? 1 : 0);
 	
-//var test_vaoln=$("#test_on").val(localStorage.base_url+'get_out_submit?cid='+localStorage.cid+'&user_id='+localStorage.user_id+'&user_pass='+localStorage.user_pass+'&getOut_date='+getOut_date+'&getOut_licns_no='+getOut_licns_no+'&getOut_drv_name='+getOut_drv_name+'&getOut_trc_no='+getOut_trc_no+'&ppe_out_yn='+ppe_out_yn+'&ppe_out_n='+ppe_out_n)
+//var test_vaoln=$("#test_on").val(localStorage.base_url+'get_out_submit?cid='+localStorage.cid+'&user_id='+localStorage.user_id+'&user_pass='+localStorage.user_pass+'&getOut_date='+getOut_date+'&getOut_lic_no='+getOut_lic_no+'&getOut_drv_name='+getOut_drv_name+'&getOut_trc_no='+getOut_trc_no+'&ppe_out_yn='+ppe_out_yn+'&ppe_out_n='+ppe_out_n)
 				
-	$.ajax(localStorage.base_url+'get_out_submit?cid='+localStorage.cid+'&user_id='+localStorage.user_id+'&user_pass='+localStorage.user_pass+'&getOut_date='+getOut_date+'&getOut_licns_no='+getOut_licns_no+'&getOut_drv_name='+getOut_drv_name+'&getOut_trc_no='+getOut_trc_no+getOut_trc_no+'&ppe_out_yn='+ppe_out_yn,{
+	$.ajax(localStorage.base_url+'get_out_submit?cid='+localStorage.cid+'&user_id='+localStorage.user_id+'&user_pass='+localStorage.user_pass+'&getOut_date='+getOut_date+'&getOut_lic_no='+getOut_lic_no+'&getOut_drv_name='+getOut_drv_name+'&getOut_trc_no='+getOut_trc_no+getOut_trc_no+'&ppe_out_yn='+ppe_out_yn,{
 
 		type: 'POST',
 		timeout: 30000,
@@ -596,14 +579,14 @@ function get_out_submit() {
 					var result_string=resultArray[1];
 
 					$("#getOut_date").val('');
-				    $("#getOut_licns_no").val('');
+				    $("#getOut_lic_no").val('');
 				    $("#getOut_drv_name").val('');
 				    $("#getOut_trc_no").val('');
 				    $("#ppe_out_yn").val('');
 
 					$("#error_getout_page").html(result_string)
 					
-				 $("#get_out_wimg").hide();
+				 // $("#get_out_wimg").hide();
 				
 				}else{	
 					 $("#get_out_wimg").hide();
@@ -622,7 +605,7 @@ function get_out_submit() {
 
 function get_out() {	
 
-	$("#get_out_wimg").hide();
+	// $("#get_out_wimg").hide();
 	$.afui.loadContent("#get_Page_out",true,true,'right');
 }
 
@@ -649,22 +632,9 @@ function login_page() {
 
 	  
 
-function exit_page() {	
-	$("#loginButton").show();
-
-	$("#wait_image_login").hide();
-	
-	$.afui.loadContent("#login",true,true,'right');
-}
-
 // ======================== shima end ================
 
 
-function exit() {	
-
-	// $.afui.loadContent("#login",true,true,'right');
-	navigator.app.exitApp();
-}
 
 /*********** jahangirEditedEnd16Feb medClick  *********/
 $('#ThumbnailTest_buttonTakePhotosNow').click(function(){

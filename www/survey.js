@@ -16,7 +16,7 @@ $.afui.useOSThemes=false;
             $(document.body).get(0).className=(search);
         });
     }
-var  apipath ='http://a007.yeapps.com/acme/medSearch/'
+//var  apipath ='http://a007.yeapps.com/acme/medSearch/'
 
 
 
@@ -34,15 +34,23 @@ $(document).ready(function(){
 	
 	getLocationInfo_ready();
 	
-	
 
-var currentDate = new Date()
-var day = currentDate.getDate();if(parseInt(day)<9)	{day="0" + day};
-var month = currentDate.getMonth() + 1;if(parseInt(month)<9){month="0" +month};
-var year = currentDate.getFullYear()
-//alert (parseInt(day))
-var today=  year + "-" + month + "-" + day
-localStorage.today=today;
+	$("#error_getin_page").html('');
+	$("#empty_field_msg").hide();
+	$("#get_in_wimg").hide();
+
+	$("#get_out_wimg").hide();
+
+	$('#get_Page_inlist_li').empty();
+	$('#get_Page_inlist_li').append(localStorage.get_list_tr);
+
+	var currentDate = new Date()
+	var day = currentDate.getDate();if(parseInt(day)<9)	{day="0" + day};
+	var month = currentDate.getMonth() + 1;if(parseInt(month)<9){month="0" +month};
+	var year = currentDate.getFullYear()
+	//alert (parseInt(day))
+	var today=  year + "-" + month + "-" + day
+	localStorage.today=today;
 
 
 	//currentDate=2016-03-11
@@ -310,6 +318,8 @@ function clear_autho(){
 
 
 function get_login() {
+	
+	$("#wait_image_login").hide();
 	$.afui.loadContent("#login",true,true,'right');
 
 	}
@@ -453,7 +463,7 @@ function lafarge_app() {
 		
 
 function get_in() {	
-
+	$("#empty_field_msg").hide();
 	$("#get_in_wimg").hide();
 	$.afui.loadContent("#get_Page_in",true,true,'right');
 }
@@ -461,7 +471,10 @@ function get_in() {
 
 function get_in_submit() {
 	$("#error_getin_page").html('');
+	$("#empty_field_msg").hide();
 	$("#get_in_wimg").show();
+	var errorFlag=0;
+
 	
 	var getIn_drvName=$("#getIn_drvName").val();
 	var getIn_truckNo=$("#getIn_truckNo").val();
@@ -491,13 +504,19 @@ function get_in_submit() {
     var safety_goggles=($("#safety_goggles").is(':checked') ? 1 : 0);
     var hard_hat=($("#hard_hat").is(':checked') ? 1 : 0);
 	
-	// getLocationInfo_ready()
+	if(getIn_drvName =='' || getIn_truckNo =='' || getIn_linc1 =='' || getIn_linc2 =='' || getIn_linc3 =='' || getIn_linc4 =='' ){
+        errorFlag=1;
+    }
+
 	
- var test_valn=$("#test_n").val(localStorage.base_url+'get_in_submit?cid='+localStorage.cid+'&user_id='+localStorage.user_id+'&user_pass='+localStorage.user_pass+'&getIn_drvName='+getIn_drvName+'&getIn_truckNo='+getIn_truckNo+'&getIn_linc1='+getIn_linc1+'&getIn_linc2='+getIn_linc2+'&getIn_linc3='+getIn_linc3+'&getIn_linc4='+getIn_linc4 +'&getIn_driv_licns_check='+getIn_driv_licns_check+'&getIn_licns_check='+getIn_licns_check+'&getIn_safty_brf='+getIn_safty_brf+'&getIn_tire='+getIn_tire+'&getIn_ligth='+getIn_ligth+'&getIn_horn='+getIn_horn +'&getIn_windshild ='+getIn_windshild+'&getIn_glass ='+getIn_glass+'&getIn_wiper ='+getIn_wiper+'&ppe_getIn ='+ppe_getIn+'&bulker='+bulker+'&contrac_truck='+contrac_truck+'&spot_truck='+spot_truck+'&safety_shoe='+safety_shoe+'&high_visibility='+high_visibility+'&safety_goggles='+safety_goggles+'&hard_hat='+hard_hat)
+	
+	
+	if(errorFlag==0){
+		// var test_valn=$("#test_n").val(localStorage.base_url+'get_in_submit?cid='+localStorage.cid+'&user_id='+localStorage.user_id+'&user_pass='+localStorage.user_pass+'&getIn_drvName='+getIn_drvName+'&getIn_truckNo='+getIn_truckNo+'&getIn_linc1='+getIn_linc1+'&getIn_linc2='+getIn_linc2+'&getIn_linc3='+getIn_linc3+'&getIn_linc4='+getIn_linc4 +'&getIn_driv_licns_check='+getIn_driv_licns_check+'&getIn_licns_check='+getIn_licns_check+'&getIn_safty_brf='+getIn_safty_brf+'&getIn_tire='+getIn_tire+'&getIn_ligth='+getIn_ligth+'&getIn_horn='+getIn_horn +'&getIn_windshild ='+getIn_windshild+'&getIn_glass ='+getIn_glass+'&getIn_wiper ='+getIn_wiper+'&ppe_getIn ='+ppe_getIn+'&bulker='+bulker+'&contrac_truck='+contrac_truck+'&spot_truck='+spot_truck+'&safety_shoe='+safety_shoe+'&high_visibility='+high_visibility+'&safety_goggles='+safety_goggles+'&hard_hat='+hard_hat)
 		
-	// alert(localStorage.base_url+'get_in_submit?cid='+localStorage.cid+'&user_id='+localStorage.user_id+'&user_pass='+localStorage.user_pass+'&getIn_drvName='+getIn_drvName+'&getIn_truckNo='+getIn_truckNo+'&getIn_linc1='+getIn_linc1+'&getIn_linc2='+getIn_linc2+'&getIn_linc3='+getIn_linc3+'&getIn_linc4='+getIn_linc4 +'&getIn_driv_licns_check='+getIn_driv_licns_check+'&getIn_licns_check='+getIn_licns_check+'&getIn_safty_brf='+getIn_safty_brf+'&getIn_tire='+getIn_tire+'&getIn_ligth='+getIn_ligth+'&getIn_horn ='+getIn_horn +'&getIn_windshild ='+getIn_windshild+'&getIn_glass ='+getIn_glass+'&getIn_wiper ='+getIn_wiper+'&ppe_getIn ='+ppe_getIn)
-									// =============== novivo2019 start ================
-	$.ajax(localStorage.base_url+'get_in_submit?cid='+localStorage.cid+'&user_id='+localStorage.user_id+'&user_pass='+localStorage.user_pass+'&getIn_drvName='+getIn_drvName+'&getIn_truckNo='+getIn_truckNo+'&getIn_linc1='+getIn_linc1+'&getIn_linc2='+getIn_linc2+'&getIn_linc3='+getIn_linc3+'&getIn_linc4='+getIn_linc4 +'&getIn_driv_licns_check='+getIn_driv_licns_check+'&getIn_licns_check='+getIn_licns_check+'&getIn_safty_brf='+getIn_safty_brf+'&getIn_tire='+getIn_tire+'&getIn_ligth='+getIn_ligth+'&getIn_horn='+getIn_horn+'&getIn_windshild='+getIn_windshild+'&getIn_glass='+getIn_glass+'&getIn_wiper='+getIn_wiper+'&ppe_getIn='+ppe_getIn+'&bulker='+bulker+'&contrac_truck='+contrac_truck+'&spot_truck='+spot_truck+'&safety_shoe='+safety_shoe+'&high_visibility='+high_visibility+'&safety_goggles='+safety_goggles+'&hard_hat='+hard_hat,{
+	 // alert(localStorage.base_url+'get_in_submit?cid='+localStorage.cid+'&user_id='+localStorage.user_id+'&user_pass='+localStorage.user_pass+'&getIn_drvName='+getIn_drvName+'&getIn_truckNo='+getIn_truckNo+'&getIn_linc1='+getIn_linc1+'&getIn_linc2='+getIn_linc2+'&getIn_linc3='+getIn_linc3+'&getIn_linc4='+getIn_linc4 +'&getIn_driv_licns_check='+getIn_driv_licns_check+'&getIn_licns_check='+getIn_licns_check+'&getIn_safty_brf='+getIn_safty_brf+'&getIn_tire='+getIn_tire+'&getIn_ligth='+getIn_ligth+'&getIn_horn ='+getIn_horn +'&getIn_windshild ='+getIn_windshild+'&getIn_glass ='+getIn_glass+'&getIn_wiper ='+getIn_wiper+'&ppe_getIn ='+ppe_getIn)
+	var lncsDes	=getIn_linc1+'-'+getIn_linc2+'-'+getIn_linc3+'-'+getIn_linc4							
+	$.ajax(localStorage.base_url+'get_in_submit?cid='+localStorage.cid+'&user_id='+localStorage.user_id+'&user_pass='+localStorage.user_pass+'&getIn_drvName='+getIn_drvName+'&getIn_truckNo='+getIn_truckNo+'&getIn_linc1='+getIn_linc1+'&getIn_linc2='+getIn_linc2+'&getIn_linc3='+getIn_linc3+'&getIn_linc4='+getIn_linc4 +'&getIn_driv_licns_check='+getIn_driv_licns_check+'&getIn_licns_check='+getIn_licns_check+'&getIn_safty_brf='+getIn_safty_brf+'&getIn_tire='+getIn_tire+'&getIn_ligth='+getIn_ligth+'&getIn_horn='+getIn_horn+'&getIn_windshild='+getIn_windshild+'&getIn_glass='+getIn_glass+'&getIn_wiper='+getIn_wiper+'&ppe_getIn='+ppe_getIn+'&bulker='+bulker+'&contrac_truck='+contrac_truck+'&spot_truck='+spot_truck+'&safety_shoe='+safety_shoe+'&high_visibility='+high_visibility+'&safety_goggles='+safety_goggles+'&hard_hat='+hard_hat+'&lncsDes='+lncsDes,{
 
 		type: 'POST',
 		timeout: 30000,
@@ -517,7 +536,7 @@ function get_in_submit() {
 						$("#error_getin_page").text(resultArray[1]);	
 				}
 				else if (resultArray[0]=='SUCCESS'){	
-					var result_string=resultArray[1];
+					 $.afui.loadContent("#success_msg",true,true,'right');	
 					
 					$("#getIn_drvName").val('');
 				    $("#getIn_truckNo").val('');
@@ -546,9 +565,8 @@ function get_in_submit() {
 				    $("#high_visibility").val('');
 				    $("#safety_goggles").val('');
 				    $("#hard_hat").val('');
-
-
-					$("#error_getin_page").html(result_string)
+					$("#empty_field_msg").hide();
+					// $("#error_getin_page").html(result_string)
 				}else{	
 				 $("#get_in_wimg").hide();
 				 $("#error_getin_page").html('Network Timeout. Please check your Internet connection..');
@@ -556,23 +574,139 @@ function get_in_submit() {
 			}
 		}//success
 	});//end ajax
+	
+	}else{
+		//alert ('aa')
+	$("#empty_field_msg").show();
+	$("#get_in_wimg").hide();
+	}
 }
 	
 
+
+
+function get_out() {
+
+	$("#get_out_wimg").hide();
+	//alert(localStorage.base_url+'get_in_list?cid='+localStorage.cid+'&user_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass)
+
+	$.ajax(localStorage.base_url+'get_in_list?cid='+localStorage.cid+'&user_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass,{
+								// cid:localStorage.cid,user_id:localStorage.user_id,rep_pass:localStorage.user_pass,synccode:localStorage.synccode,
+		type: 'POST',
+		timeout: 30000,
+		error: function(xhr) {
+
+			$("#wait_image_login").hide();
+			$("#loginButton").show();
+			$("#error_login").html('Network Timeout. Please check your Internet connection..2');
+		},
+		success:function(data, result,xhr){	
+			
+			 var resultArray = data.replace('</START>','').replace('</END>','').split('<SYNCDATA>');
+
+			if (resultArray[0]=='SUCCESS'){		
+								
+				localStorage.getinListstr=resultArray[1];
+				getinListstr=localStorage.getinListstr
+			    var getinListstr = localStorage.getinListstr.split('<rd>');
+			    var getinListstrShowLength=getinListstr.length  
+			    
+			    
+			    var get_list_tr=''
+				var get_inlisth=''
+				localStorage.get_inlisth=''
+			    get_list_tr='<table width="100%" border="0" cellspacing="0"><tr><td style="border:1px solid #a1cad6;height:25px" width="10%">Depot</td><td style="border:1px solid #a1cad6;height:25px" width="10%">Sl</td><td style="border:1px solid #a1cad6;height:25px" width="30%">Track No</td><td style="border:1px solid #a1cad6;height:25px" width="40%">In Time</td><td style="border:1px solid #a1cad6;height:25px"></td></tr>'    
+			    for (var i=0; i < getinListstrShowLength; i++){
+			        var depotValueArray = getinListstr[i].split('<fd>');
+			        depotID=depotValueArray[0];
+
+			        sl=depotValueArray[1];
+			        getinTime=depotValueArray[2];
+			        licns_no=depotValueArray[3];
+			        driver_name=depotValueArray[4];
+			        truck_no=depotValueArray[5];
+
+			        var input_id='input_'+i.toString()
+			      
+			        get_list_tr+='<tr><td style="border:1px solid #a1cad6;height:25px" width="10%">'+depotID+'</td><td style="border:1px solid #a1cad6;height:25px" width="10%">'+sl+'</td><td style="border:1px solid #a1cad6;height:25px" width="30%">'+truck_no+'</td><td style="border:1px solid #a1cad6;height:25px" width="40%">'+getinTime+'</td><td style="border:1px solid #a1cad6;height:25px" onclick="get_inList_information(\''+i+'\');"><input type="hidden" value="'+depotValueArray+'"  id="'+input_id+'"> >> </td></tr>'                                                        
+			            
+				get_inlisth=get_inlisth+'<input  name="'+input_id+'" id="'+input_id+'"  value="'+depotValueArray+'" type="hidden">'
+									
+			    }
+				get_list_tr+='</table>'
+	    		localStorage.get_list_tr=get_list_tr;
+
+			    
+				$('#get_Page_inlist_li').empty();
+				$('#get_Page_inlist_li').append(localStorage.get_list_tr);
+			}else{
+				$.afui.loadContent("#empty_msg",true,true,'right');
+								
+			}
+			
+			
+		},
+		error: function(result) {
+									
+			$("#error_login").html("Network error has occurred please try again!");
+			$("#wait_image_login").hide();
+			$("#loginButton").show();
+		}
+	});	//Second Hit
+
+	$("#get_out_wimg").hide();
+	$.afui.loadContent("#get_Page_inlist",true,true,'right');
+}
+
+function get_cancel(){
+	get_out()
+}
+function get_inList_information(i) {
+	$("#get_out_wimg").hide();
+		var input_id='input_'+i.toString()
+
+		var get_listval=$("#"+input_id).val();
+		
+		localStorage.get_listval=get_listval
+		var get_listvalstr = localStorage.get_listval.split(',');
+
+       var getInsl=get_listvalstr[1];
+       var getinTime=get_listvalstr[2];
+       var licns_no=get_listvalstr[3];
+       var driver_name=get_listvalstr[4];
+       var truck_no=get_listvalstr[5];
+		
+		$("#getInSl").val(getInsl);
+		$("#getOut_date").val(getinTime);
+		$("#getOut_licns_no").val(licns_no);
+		$("#getOut_drv_name").val(driver_name);
+		$("#getOut_trc_no").val(truck_no);
+	
+
+	$.afui.loadContent("#get_Page_out",true,true,'right');
+}
+
+
+
+
 function get_out_submit() {
+
 	$("#error_getout_page").html('');
 	$("#get_out_wimg").show();
-	
+
+
+	var getInSl=$("#getInSl").val();
 	var getOut_date=$("#getOut_date").val();
+
 	var getOut_licns_no=$("#getOut_licns_no").val();
 
 	var getOut_drv_name=$("#getOut_drv_name").val();
 	var getOut_trc_no=$("#getOut_trc_no").val();
 	var ppe_out_yn= ($('#ppe_out_yn').is(':checked') ? 1 : 0);
 	
-//var test_vaoln=$("#test_on").val(localStorage.base_url+'get_out_submit?cid='+localStorage.cid+'&user_id='+localStorage.user_id+'&user_pass='+localStorage.user_pass+'&getOut_date='+getOut_date+'&getOut_licns_no='+getOut_licns_no+'&getOut_drv_name='+getOut_drv_name+'&getOut_trc_no='+getOut_trc_no+'&ppe_out_yn='+ppe_out_yn+'&ppe_out_n='+ppe_out_n)
-				
-	$.ajax(localStorage.base_url+'get_out_submit?cid='+localStorage.cid+'&user_id='+localStorage.user_id+'&user_pass='+localStorage.user_pass+'&getOut_date='+getOut_date+'&getOut_licns_no='+getOut_licns_no+'&getOut_drv_name='+getOut_drv_name+'&getOut_trc_no='+getOut_trc_no+getOut_trc_no+'&ppe_out_yn='+ppe_out_yn,{
+ // var test_vaoln=$("#test_on").val(localStorage.base_url+'get_out_submit?cid='+localStorage.cid+'&user_id='+localStorage.user_id+'&user_pass='+localStorage.user_pass+'&getInSl='+getInSl+'&getOut_date='+getOut_date+'&getOut_licns_no='+getOut_licns_no+'&getOut_drv_name='+getOut_drv_name+'&getOut_trc_no='+getOut_trc_no+'&ppe_out_yn='+ppe_out_yn+'&ppe_out_n='+ppe_out_n)
+ 				// alert(localStorage.base_url+'get_out_submit?cid='+localStorage.cid+'&user_id='+localStorage.user_id+'&user_pass='+localStorage.user_pass+'&getInSl='+getInSl+'&getOut_date='+getOut_date+'&getOut_licns_no='+getOut_licns_no+'&getOut_drv_name='+getOut_drv_name+'&getOut_trc_no='+getOut_trc_no+'&ppe_out_yn='+ppe_out_yn)
+	$.ajax(localStorage.base_url+'get_out_submit?cid='+localStorage.cid+'&user_id='+localStorage.user_id+'&user_pass='+localStorage.user_pass+'&getInSl='+getInSl+'&getOut_date='+getOut_date+'&getOut_licns_no='+getOut_licns_no+'&getOut_drv_name='+getOut_drv_name+'&getOut_trc_no='+getOut_trc_no+'&ppe_out_yn='+ppe_out_yn,{
 
 		type: 'POST',
 		timeout: 30000,
@@ -587,23 +721,23 @@ function get_out_submit() {
 			}
 			else{	
 				var resultArray = data.replace('</START>','').replace('</END>','').split('<SYNCDATA>');	
-					
+				
 				if (resultArray[0]=='FAILED'){
 					$("#error_getout_page").text(resultArray[1]);	
 						
 				}
 				else if (resultArray[0]=='SUCCESS'){	
-					var result_string=resultArray[1];
-
+					// var result_string=resultArray[1];
+					 $.afui.loadContent("#success_msg",true,true,'right');			
+											
 					$("#getOut_date").val('');
 				    $("#getOut_licns_no").val('');
 				    $("#getOut_drv_name").val('');
 				    $("#getOut_trc_no").val('');
 				    $("#ppe_out_yn").val('');
 
-					$("#error_getout_page").html(result_string)
+					$("#error_getout_page").html()
 					
-				 $("#get_out_wimg").hide();
 				
 				}else{	
 					 $("#get_out_wimg").hide();
@@ -614,22 +748,17 @@ function get_out_submit() {
 	});//end ajax
 }
 	
-	//$.afui.loadContent("#page_doctor_profile",true,true,'right');
 	
 
 
-
-
-function get_out() {	
-
-	$("#get_out_wimg").hide();
-	$.afui.loadContent("#get_Page_out",true,true,'right');
-}
 
 function get_in_out_list() {	
 	$.afui.loadContent("#get_Page_in_outlist",true,true,'right');
 }
 
+function back_getInList_page_get() {	
+	$.afui.loadContent("#get_Page_inlist",true,true,'right');
+}
 function back_page_get() {	
 	$.afui.loadContent("#pageHome",true,true,'right');
 }

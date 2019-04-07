@@ -358,8 +358,8 @@ function lafarge_app() {
 	var cid=$("#cid").val().toUpperCase();
 	cid=$.trim(cid);
 	
-	var  apipath_base_photo_dm='http://127.0.0.1:8000/lafarge/syncmobile_lafarge/dmpath?CID='+localStorage.cid +'&HTTPPASS=e99business321cba'
-	//var  apipath_base_photo_dm='http://w02.yeapps.com/lfg_getin/syncmobile_lafarge/dmpath?CID='+localStorage.cid +'&HTTPPASS=e99business321cba'			 	 
+	//var  apipath_base_photo_dm='http://127.0.0.1:8000/lafarge/syncmobile_lafarge/dmpath?CID='+localStorage.cid +'&HTTPPASS=e99business321cba'
+	var  apipath_base_photo_dm='http://w02.yeapps.com/lfg_getin/syncmobile_lafarge/dmpath?CID='+localStorage.cid +'&HTTPPASS=e99business321cba'			 	 
 	
 	//alert(apipath_base_photo_dm)
 	

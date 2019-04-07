@@ -44,12 +44,6 @@ $(document).ready(function(){
 	$('#get_Page_inlist_li').empty();
 	$('#get_Page_inlist_li').append(localStorage.get_list_tr);
 
-	// ================ shima20190403 =================
-	 $('#getIn_truck1').empty();
-      $('#getIn_truck1').append(localStorage.truck_info_combo_tr); 
-	 $('#getIn_truck2').empty();
-      $('#getIn_truck2').append(localStorage.truck_info_combo_tr1); 
-
 	var currentDate = new Date()
 	var day = currentDate.getDate();if(parseInt(day)<9)	{day="0" + day};
 	var month = currentDate.getMonth() + 1;if(parseInt(month)<9){month="0" +month};
@@ -358,9 +352,10 @@ function lafarge_app() {
 	var cid=$("#cid").val().toUpperCase();
 	cid=$.trim(cid);
 	
-	var  apipath_base_photo_dm='http://127.0.0.1:8000/lafarge/syncmobile_lafarge/dmpath?CID='+localStorage.cid +'&HTTPPASS=e99business321cba'
-	//var  apipath_base_photo_dm='http://w02.yeapps.com/lfg_getin/syncmobile_lafarge/dmpath?CID='+localStorage.cid +'&HTTPPASS=e99business321cba'			 	 
+	//var  apipath_base_photo_dm='http://127.0.0.1:8000/kpl/syncmobile_417_new_ibn_newtest/dmpath'
 	
+	//var  apipath_base_photo_dm='http://127.0.0.1:8000/lafarge/syncmobile_lafarge/dmpath?CID='+localStorage.cid +'&HTTPPASS=e99business321cba'
+	var  apipath_base_photo_dm='http://w02.yeapps.com/lfg_getin/syncmobile_lafarge/dmpath?CID='+localStorage.cid +'&HTTPPASS=e99business321cba'			 	 
 	//alert(apipath_base_photo_dm)
 	
 	var user_id=$("#user_id").val();
@@ -394,7 +389,7 @@ function lafarge_app() {
 					var resultArray = dtaStr.split('<fd>');	
 					 //alert(resultArray)
 					// var apiPath=resultArray[0]
-					$("#error_login").html('');
+
 					if(resultArray.length>1){
 						var base_url=resultArray[0];
 						var photo_url=resultArray[1];
@@ -429,6 +424,7 @@ function lafarge_app() {
 							//alert (localStorage.base_url+'lafarge_app?cid='+localStorage.cid+'&user_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode)
 							
 							$.ajax(localStorage.base_url+'lafarge_app?cid='+localStorage.cid+'&user_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode,{
+								// cid:localStorage.cid,user_id:localStorage.user_id,rep_pass:localStorage.user_pass,synccode:localStorage.synccode,
 								type: 'POST',
 								timeout: 30000,
 								error: function(xhr) {
@@ -450,43 +446,6 @@ function lafarge_app() {
 										afterSync()
 
 										localStorage.synccode=resultArray[1];
-										localStorage.truckInfoStr=resultArray[2];
-										localStorage.truckInfo1Str=resultArray[3];
-										
-									    var truckInfoList = localStorage.truckInfoStr.split('<rd>');
-									    var truckInfoListShowLength=truckInfoList.length                
-									    var truckInfoStrComb_tr=''
-
-									    truckInfoStrComb_tr='<option style="font-size:12px; color:#306161; background-color:#eef4f7"></option>'
-									   	for (var k=0; k < truckInfoListShowLength; k++){
-									        var truckInfoStrValueArray = truckInfoList[k].split('<fd>');
-									        truckInfo=truckInfoStrValueArray[0];
-									        if(truckInfo!=''){
-									            truckInfoStrComb_tr+='<option style="font-size:12px; color:#306161; background-color:#eef4f7" value="'+truckInfo+'"><font style="font-size:12px; color:#306161; background-color:#eef4f7">'+truckInfo+'</font></option>'                                                        
-									        }
-									    }
-									    
-									    var truckInfo1List = localStorage.truckInfo1Str.split('<rd>');
-								        var truckInfo1ListShowLength=truckInfo1List.length         
-								        var truckInfoStrComb_tr1=''
-
-								        truckInfoStrComb_tr1='<option style="font-size:12px; color:#306161; background-color:#eef4f7"></option>'
-								        for (var k=0; k < truckInfo1ListShowLength; k++){
-								            var truckInfo1StrValueArray = truckInfo1List[k].split('<fd>');
-								            truckInfo1=truckInfo1StrValueArray[0];
-								            if(truckInfo!=''){
-								                truckInfoStrComb_tr1+='<option style="font-size:12px; color:#306161; background-color:#eef4f7" value="'+truckInfo1+'"><font style="font-size:12px; color:#306161; background-color:#eef4f7">'+truckInfo1+'</font></option>'
-								            }
-								        }  
-
-									    localStorage.truck_info_combo_tr=truckInfoStrComb_tr;
-									    localStorage.truck_info_combo_tr1=truckInfoStrComb_tr1;
-
-									    $('#getIn_truck1').empty();
-									    $('#getIn_truck1').append(localStorage.truck_info_combo_tr);    
-
-									    $('#getIn_truck2').empty();
-  										$('#getIn_truck2').append(localStorage.truck_info_combo_tr1);
 										localStorage.synced='YES';
 										$.afui.loadContent("#pageHome",true,true,'right');
 										
@@ -518,23 +477,34 @@ function get_in_submit() {
 
 	
 	var getIn_drvName=$("#getIn_drvName").val();
-	var getIn_mobileNo=$("#getIn_mobileNo").val();
+	var getIn_truckNo=$("#getIn_truckNo").val();
 
-	var getIn_truck1=$("#getIn_truck1").val();
-	var getIn_truck2=$("#getIn_truck2").val();
-	var getIn_truck3=$("#getIn_truck3").val();
-	var getIn_truck4=$("#getIn_truck4").val();
+	var getIn_linc1=$("#getIn_linc1").val();
+	var getIn_linc2=$("#getIn_linc2").val();
+	var getIn_linc3=$("#getIn_linc3").val();
+	var getIn_linc4=$("#getIn_linc4").val();
 
 	var getIn_driv_licns_check=($("#getIn_driv_licns_check").is(':checked') ? 1 : 0);
+	var getIn_licns_check=($("#getIn_licns_check").is(':checked') ? 1 : 0);
 	var getIn_safty_brf=($("#getIn_safty_brf").is(':checked') ? 1 : 0);
-    // var ppe_getIn=($("#ppe_getIn").is(':checked') ? 1 : 0);
+	var getIn_tire=($("#getIn_tire").is(':checked') ? 1 : 0);
+	var getIn_ligth=($("#getIn_ligth").is(':checked') ? 1 : 0);
+	
+    var getIn_horn=($("#getIn_horn").is(':checked') ? 1 : 0);
+    var getIn_windshild=($("#getIn_windshild").is(':checked') ? 1 : 0);
+    var getIn_glass=($("#getIn_glass").is(':checked') ? 1 : 0);
+    var getIn_wiper=($("#getIn_wiper").is(':checked') ? 1 : 0);
+    var ppe_getIn=($("#ppe_getIn").is(':checked') ? 1 : 0);
 
+    var bulker=($("#bulker").is(':checked') ? 1 : 0);
+    var contrac_truck=($("#contrac_truck").is(':checked') ? 1 : 0);
+    var spot_truck=($("#spot_truck").is(':checked') ? 1 : 0);
     var safety_shoe=($("#safety_shoe").is(':checked') ? 1 : 0);
     var high_visibility=($("#high_visibility").is(':checked') ? 1 : 0);
     var safety_goggles=($("#safety_goggles").is(':checked') ? 1 : 0);
     var hard_hat=($("#hard_hat").is(':checked') ? 1 : 0);
 	
-	if(getIn_drvName =='' || getIn_mobileNo =='' || getIn_truck1 =='' || getIn_truck2 =='' || getIn_truck3 =='' || getIn_truck4 =='' ){
+	if(getIn_drvName =='' || getIn_truckNo =='' || getIn_linc1 =='' || getIn_linc2 =='' || getIn_linc3 =='' || getIn_linc4 =='' ){
         errorFlag=1;
     }
 
@@ -542,11 +512,11 @@ function get_in_submit() {
 	
 	
 	if(errorFlag==0){
-	 // var test_valn=$("#test_n").val(localStorage.base_url+'get_in_submit?cid='+localStorage.cid+'&user_id='+localStorage.user_id+'&user_pass='+localStorage.user_pass+'&getIn_drvName='+getIn_drvName+'&getIn_mobileNo='+getIn_mobileNo+'&getIn_truck1='+getIn_truck1+'&getIn_truck2='+getIn_truck2+'&getIn_truck3='+getIn_truck3+'&getIn_truck4='+getIn_truck4+'&getIn_driv_licns_check='+getIn_driv_licns_check+'&getIn_safty_brf='+getIn_safty_brf+'&safety_shoe='+safety_shoe+'&high_visibility='+high_visibility+'&safety_goggles='+safety_goggles+'&hard_hat='+hard_hat)
+		// var test_valn=$("#test_n").val(localStorage.base_url+'get_in_submit?cid='+localStorage.cid+'&user_id='+localStorage.user_id+'&user_pass='+localStorage.user_pass+'&getIn_drvName='+getIn_drvName+'&getIn_truckNo='+getIn_truckNo+'&getIn_linc1='+getIn_linc1+'&getIn_linc2='+getIn_linc2+'&getIn_linc3='+getIn_linc3+'&getIn_linc4='+getIn_linc4 +'&getIn_driv_licns_check='+getIn_driv_licns_check+'&getIn_licns_check='+getIn_licns_check+'&getIn_safty_brf='+getIn_safty_brf+'&getIn_tire='+getIn_tire+'&getIn_ligth='+getIn_ligth+'&getIn_horn='+getIn_horn +'&getIn_windshild ='+getIn_windshild+'&getIn_glass ='+getIn_glass+'&getIn_wiper ='+getIn_wiper+'&ppe_getIn ='+ppe_getIn+'&bulker='+bulker+'&contrac_truck='+contrac_truck+'&spot_truck='+spot_truck+'&safety_shoe='+safety_shoe+'&high_visibility='+high_visibility+'&safety_goggles='+safety_goggles+'&hard_hat='+hard_hat)
 		
-	  // alert(localStorage.base_url+'get_in_submit?cid='+localStorage.cid+'&user_id='+localStorage.user_id+'&user_pass='+localStorage.user_pass+'&getIn_drvName='+getIn_drvName+'&getIn_mobileNo='+getIn_mobileNo+'&getIn_truck1='+getIn_truck1+'&getIn_truck2='+getIn_truck2+'&getIn_truck3='+getIn_truck3+'&getIn_truck4='+getIn_truck4+'&getIn_driv_licns_check='+getIn_driv_licns_check+'&getIn_safty_brf='+getIn_safty_brf)
-	var truckDes	=getIn_truck1+'-'+getIn_truck2+'-'+getIn_truck3+'-'+getIn_truck4							
-	$.ajax(localStorage.base_url+'get_in_submit?cid='+localStorage.cid+'&user_id='+localStorage.user_id+'&user_pass='+localStorage.user_pass+'&getIn_drvName='+getIn_drvName+'&getIn_mobileNo='+getIn_mobileNo+'&getIn_truck1='+getIn_truck1+'&getIn_truck2='+getIn_truck2+'&getIn_truck3='+getIn_truck3+'&getIn_truck4='+getIn_truck4+'&getIn_driv_licns_check='+getIn_driv_licns_check+'&getIn_safty_brf='+getIn_safty_brf+'&safety_shoe='+safety_shoe+'&high_visibility='+high_visibility+'&safety_goggles='+safety_goggles+'&hard_hat='+hard_hat+'&truckDes='+truckDes,{
+	 // alert(localStorage.base_url+'get_in_submit?cid='+localStorage.cid+'&user_id='+localStorage.user_id+'&user_pass='+localStorage.user_pass+'&getIn_drvName='+getIn_drvName+'&getIn_truckNo='+getIn_truckNo+'&getIn_linc1='+getIn_linc1+'&getIn_linc2='+getIn_linc2+'&getIn_linc3='+getIn_linc3+'&getIn_linc4='+getIn_linc4 +'&getIn_driv_licns_check='+getIn_driv_licns_check+'&getIn_licns_check='+getIn_licns_check+'&getIn_safty_brf='+getIn_safty_brf+'&getIn_tire='+getIn_tire+'&getIn_ligth='+getIn_ligth+'&getIn_horn ='+getIn_horn +'&getIn_windshild ='+getIn_windshild+'&getIn_glass ='+getIn_glass+'&getIn_wiper ='+getIn_wiper+'&ppe_getIn ='+ppe_getIn)
+	var lncsDes	=getIn_linc1+'-'+getIn_linc2+'-'+getIn_linc3+'-'+getIn_linc4							
+	$.ajax(localStorage.base_url+'get_in_submit?cid='+localStorage.cid+'&user_id='+localStorage.user_id+'&user_pass='+localStorage.user_pass+'&getIn_drvName='+getIn_drvName+'&getIn_truckNo='+getIn_truckNo+'&getIn_linc1='+getIn_linc1+'&getIn_linc2='+getIn_linc2+'&getIn_linc3='+getIn_linc3+'&getIn_linc4='+getIn_linc4 +'&getIn_driv_licns_check='+getIn_driv_licns_check+'&getIn_licns_check='+getIn_licns_check+'&getIn_safty_brf='+getIn_safty_brf+'&getIn_tire='+getIn_tire+'&getIn_ligth='+getIn_ligth+'&getIn_horn='+getIn_horn+'&getIn_windshild='+getIn_windshild+'&getIn_glass='+getIn_glass+'&getIn_wiper='+getIn_wiper+'&ppe_getIn='+ppe_getIn+'&bulker='+bulker+'&contrac_truck='+contrac_truck+'&spot_truck='+spot_truck+'&safety_shoe='+safety_shoe+'&high_visibility='+high_visibility+'&safety_goggles='+safety_goggles+'&hard_hat='+hard_hat+'&lncsDes='+lncsDes,{
 
 		type: 'POST',
 		timeout: 30000,
@@ -567,18 +537,30 @@ function get_in_submit() {
 				}
 				else if (resultArray[0]=='SUCCESS'){	
 					 $.afui.loadContent("#success_msg",true,true,'right');	
-					reload_function();
+					
 					$("#getIn_drvName").val('');
-				    $("#getIn_mobileNo").val('');
-				    $("#getIn_truck1").val('');
-				    $("#getIn_truck2").val('');
-				    $("#getIn_truck3").val('');
-				    $("#getIn_truck4").val('');
+				    $("#getIn_truckNo").val('');
+				    $("#getIn_linc1").val('');
+				    $("#getIn_linc2").val('');
+				    $("#getIn_linc3").val('');
+				    $("#getIn_linc4").val('');
 
 				   	$("#getIn_driv_licns_check").val('');
+					$("#getIn_licns_check").val('');
 					$("#getIn_safty_brf").val('');
+					$("#getIn_tire").val('');
+					$("#getIn_ligth").val('');
+					
+				    $("#getIn_horn").val('');
+				   	$("#getIn_windshild").val('');
+				    $("#getIn_glass").val('');
+				    $("#getIn_wiper").val('');
+				    $("#ppe_getIn").val('');
 
 
+				    $("#bulker").val('');
+				    $("#contrac_truck").val('');
+				    $("#spot_truck").val('');
 				    $("#safety_shoe").val('');
 				    $("#high_visibility").val('');
 				    $("#safety_goggles").val('');
@@ -633,20 +615,20 @@ function get_out() {
 			    var get_list_tr=''
 				var get_inlisth=''
 				localStorage.get_inlisth=''
-			    get_list_tr='<table width="100%" border="0" cellspacing="0"><tr><td style="border:1px solid #a1cad6;height:25px" width="10%">Depot</td><td style="border:1px solid #a1cad6;height:25px" width="10%">Sl</td><td style="border:1px solid #a1cad6;height:25px" width="30%">Mobile No</td><td style="border:1px solid #a1cad6;height:25px" width="30%">Truck No</td><td style="border:1px solid #a1cad6;height:25px" width="40%">In Time</td><td style="border:1px solid #a1cad6;height:25px"></td></tr>'    
+			    get_list_tr='<table width="100%" border="0" cellspacing="0"><tr><td style="border:1px solid #a1cad6;height:25px" width="10%">Depot</td><td style="border:1px solid #a1cad6;height:25px" width="10%">Sl</td><td style="border:1px solid #a1cad6;height:25px" width="30%">Track No</td><td style="border:1px solid #a1cad6;height:25px" width="40%">In Time</td><td style="border:1px solid #a1cad6;height:25px"></td></tr>'    
 			    for (var i=0; i < getinListstrShowLength; i++){
 			        var depotValueArray = getinListstr[i].split('<fd>');
 			        depotID=depotValueArray[0];
 
 			        sl=depotValueArray[1];
 			        getinTime=depotValueArray[2];
-			        truck_no=depotValueArray[3];
+			        licns_no=depotValueArray[3];
 			        driver_name=depotValueArray[4];
-			        getOutmobile_no=depotValueArray[5];
+			        truck_no=depotValueArray[5];
 
 			        var input_id='input_'+i.toString()
-			      // ============= CHECK ==============
-			        get_list_tr+='<tr><td style="border:1px solid #a1cad6;height:25px" width="10%">'+depotID+'</td><td style="border:1px solid #a1cad6;height:25px" width="10%">'+sl+'</td><td style="border:1px solid #a1cad6;height:25px" width="30%">'+getOutmobile_no+'</td><td style="border:1px solid #a1cad6;height:25px" width="30%">'+truck_no+'</td><td style="border:1px solid #a1cad6;height:25px" width="40%">'+getinTime+'</td><td style="border:1px solid #a1cad6;height:25px" onclick="get_inList_information(\''+i+'\');"><input type="hidden" value="'+depotValueArray+'"  id="'+input_id+'"> >> </td></tr>'                                                        
+			      
+			        get_list_tr+='<tr><td style="border:1px solid #a1cad6;height:25px" width="10%">'+depotID+'</td><td style="border:1px solid #a1cad6;height:25px" width="10%">'+sl+'</td><td style="border:1px solid #a1cad6;height:25px" width="30%">'+truck_no+'</td><td style="border:1px solid #a1cad6;height:25px" width="40%">'+getinTime+'</td><td style="border:1px solid #a1cad6;height:25px" onclick="get_inList_information(\''+i+'\');"><input type="hidden" value="'+depotValueArray+'"  id="'+input_id+'"> >> </td></tr>'                                                        
 			            
 				get_inlisth=get_inlisth+'<input  name="'+input_id+'" id="'+input_id+'"  value="'+depotValueArray+'" type="hidden">'
 									
@@ -679,9 +661,8 @@ function get_out() {
 function get_cancel(){
 	get_out()
 }
-
 function get_inList_information(i) {
-		$("#get_out_wimg").hide();
+	$("#get_out_wimg").hide();
 		var input_id='input_'+i.toString()
 
 		var get_listval=$("#"+input_id).val();
@@ -691,51 +672,20 @@ function get_inList_information(i) {
 
        var getInsl=get_listvalstr[1];
        var getinTime=get_listvalstr[2];
-       var truck_no=get_listvalstr[3];
+       var licns_no=get_listvalstr[3];
        var driver_name=get_listvalstr[4];
-       var getOutmobile_no=get_listvalstr[5];
-
-		// localStorage.getOutmobile_no=getOutmobile_no
-
-
-		// $('#truck_info').empty();
-		// $('#truck_info').append(localStorage.getOutmobile_no);
-
+       var truck_no=get_listvalstr[5];
 		
 		$("#getInSl").val(getInsl);
 		$("#getOut_date").val(getinTime);
-		$("#getOut_truck_no").val(truck_no);
+		$("#getOut_licns_no").val(licns_no);
 		$("#getOut_drv_name").val(driver_name);
-		$("#getOut_mobile_no").val(getOutmobile_no);
+		$("#getOut_trc_no").val(truck_no);
 	
 
 	$.afui.loadContent("#get_Page_out",true,true,'right');
 }
 
-
-// function search_truck_info() {
-// 	alert('ok')
-    
-//     var filterG  = $("#truck_info").val().toUpperCase();
-//     var filter='|'+filterG
-    
-//      var lis =document.getElementById("get_Page_inlist_li").getElementsByTagName("div");
-     
-
-//     for (var i = 0; i < lis.length; i++) {
-//         var name = lis[i].getElementsByClassName('name')[0].innerHTML;
-        
-//         if (name.indexOf(filter) != -1)
-//             lis[i].style.display = 'list-item';
-            
-//         else
-//             lis[i].style.display = 'none';
-        
-//         //$("#get_Page_inlist_li").find(lis[0]).first().focus()
-//     }
-    
-//     //$("#item_codeSearch").val('');
-// }
 
 
 
@@ -748,20 +698,15 @@ function get_out_submit() {
 	var getInSl=$("#getInSl").val();
 	var getOut_date=$("#getOut_date").val();
 
-	var getOut_truck_no=$("#getOut_truck_no").val();
+	var getOut_licns_no=$("#getOut_licns_no").val();
 
 	var getOut_drv_name=$("#getOut_drv_name").val();
-	var getOut_mobile_no=$("#getOut_mobile_no").val();
-
-
-	var ppe_out_ss= ($('#ppe_out_ss').is(':checked') ? 1 : 0);
-	var ppe_out_hv= ($('#ppe_out_hv').is(':checked') ? 1 : 0);
-	var ppe_out_sg= ($('#ppe_out_sg').is(':checked') ? 1 : 0);
-	var ppe_out_hh= ($('#ppe_out_hh').is(':checked') ? 1 : 0);
+	var getOut_trc_no=$("#getOut_trc_no").val();
+	var ppe_out_yn= ($('#ppe_out_yn').is(':checked') ? 1 : 0);
 	
- // var test_vaoln=$("#test_on").val(localStorage.base_url+'get_out_submit?cid='+localStorage.cid+'&user_id='+localStorage.user_id+'&user_pass='+localStorage.user_pass+'&getInSl='+getInSl+'&getOut_date='+getOut_date+'&getOut_truck_no='+getOut_truck_no+'&getOut_drv_name='+getOut_drv_name+'&getOut_mobile_no='+getOut_mobile_no+'&ppe_out_n='+ppe_out_n)
- 				// alert(localStorage.base_url+'get_out_submit?cid='+localStorage.cid+'&user_id='+localStorage.user_id+'&user_pass='+localStorage.user_pass+'&getInSl='+getInSl+'&getOut_date='+getOut_date+'&getOut_truck_no='+getOut_truck_no+'&getOut_drv_name='+getOut_drv_name+'&getOut_mobile_no='+getOut_mobile_no)
-	$.ajax(localStorage.base_url+'get_out_submit?cid='+localStorage.cid+'&user_id='+localStorage.user_id+'&user_pass='+localStorage.user_pass+'&getInSl='+getInSl+'&getOut_date='+getOut_date+'&getOut_truck_no='+getOut_truck_no+'&getOut_drv_name='+getOut_drv_name+'&getOut_mobile_no='+getOut_mobile_no+'&ppe_out_ss='+ppe_out_ss+'&ppe_out_hv='+ppe_out_hv+'&ppe_out_sg='+ppe_out_sg+'&ppe_out_hh='+ppe_out_hh,{
+ // var test_vaoln=$("#test_on").val(localStorage.base_url+'get_out_submit?cid='+localStorage.cid+'&user_id='+localStorage.user_id+'&user_pass='+localStorage.user_pass+'&getInSl='+getInSl+'&getOut_date='+getOut_date+'&getOut_licns_no='+getOut_licns_no+'&getOut_drv_name='+getOut_drv_name+'&getOut_trc_no='+getOut_trc_no+'&ppe_out_yn='+ppe_out_yn+'&ppe_out_n='+ppe_out_n)
+ 				// alert(localStorage.base_url+'get_out_submit?cid='+localStorage.cid+'&user_id='+localStorage.user_id+'&user_pass='+localStorage.user_pass+'&getInSl='+getInSl+'&getOut_date='+getOut_date+'&getOut_licns_no='+getOut_licns_no+'&getOut_drv_name='+getOut_drv_name+'&getOut_trc_no='+getOut_trc_no+'&ppe_out_yn='+ppe_out_yn)
+	$.ajax(localStorage.base_url+'get_out_submit?cid='+localStorage.cid+'&user_id='+localStorage.user_id+'&user_pass='+localStorage.user_pass+'&getInSl='+getInSl+'&getOut_date='+getOut_date+'&getOut_licns_no='+getOut_licns_no+'&getOut_drv_name='+getOut_drv_name+'&getOut_trc_no='+getOut_trc_no+'&ppe_out_yn='+ppe_out_yn,{
 
 		type: 'POST',
 		timeout: 30000,
@@ -784,11 +729,11 @@ function get_out_submit() {
 				else if (resultArray[0]=='SUCCESS'){	
 					// var result_string=resultArray[1];
 					 $.afui.loadContent("#success_msg",true,true,'right');			
-						reload_function();			
+											
 					$("#getOut_date").val('');
-				    $("#getOut_truck_no").val('');
+				    $("#getOut_licns_no").val('');
 				    $("#getOut_drv_name").val('');
-				    $("#getOut_mobile_no").val('');
+				    $("#getOut_trc_no").val('');
 				    $("#ppe_out_yn").val('');
 
 					$("#error_getout_page").html()
@@ -824,7 +769,6 @@ function back_page_get() {
 // }
 
 function login_page() {	
-	// ("#error_login").html('');
 	$("#loginButton").show();
 
 	$("#wait_image_login").hide();

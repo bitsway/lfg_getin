@@ -199,42 +199,75 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                 <td width="70%"><input type="text" id="getIn_drvName" name="getIn_drvName"  style="width:100%;height:35px;background: #f7ffff;border-radius:3px;border:1px solid #a4becc" placeholder="ড্রাইভার এর নাম" value=""   /></td>
               </tr>
               <tr>
-<!-- =========================== chanege1  start=============== -->
-                <td width="30%">
-                  <b>মোবাইল নম্বর  :</b>
 
-                </td>
-                <td width="70%"><input type="number" id="getIn_mobileNo" name="getIn_mobileNo"  style="width:100%;height:35px;background: #f7ffff;border-radius:3px;border:1px solid #a4becc" placeholder="মোবাইল নম্বর" value=""   /></td>
+                <td width="30%"><b>ট্রাক এর নাম্বার  :</b></td>
+                <td width="70%"><input type="text" id="getIn_truckNo" name="getIn_truckNo"  style="width:100%;height:35px;background: #f7ffff;border-radius:3px;border:1px solid #a4becc" placeholder="ট্রাক এর নাম্বার" value=""   /></td>
               </tr>
               <tr>
 
-                <td width="30%">
-                  <b>ট্রাক এর নাম্বার  :</b>
-
-                  <!-- <b>লাইসেন্স নাম্বার  :</b> -->
-                </td>
-
-<!-- =========================== chanege1 end =============== -->
+                <td width="30%"><b>লাইসেন্স নাম্বার  :</b></td>
                 <td>
                   <table >
                     <tr>
                        <td width="15%">
-                      <select id="getIn_truck1" name="getIn_truck1" style="width:100%;height:35px;padding:0px 3px;background: #f7ffff;border-radius:3px;border:1px solid #a4becc">
+                      <select id="getIn_linc1" name="getIn_linc1" style="width:100%;height:35px;padding:0px 3px;background: #f7ffff;border-radius:3px;border:1px solid #a4becc">
                         <option value=""></option>
-                       
+                        <option value="ঢাকা মেট্রো">ঢাকা মেট্রো</option>
+                        <option value="বরিশাল">বরিশাল</option>
+                        <option value="চট্ট মেট্রো">চট্ট মেট্রো</option>
                       </select>
                 </td>
-                <td width="1%">&nbsp;&nbsp;<span>-</span></td>
                 <td width="10%">
-                  <select id="getIn_truck2" name="getIn_truck2" style="width:100%;height:35px;background: #f7ffff;padding:0px 3px;border-radius:3px;border:1px solid #a4becc"></select>
+                  <select id="getIn_linc2" name="getIn_linc2" style="width:100%;height:35px;background: #f7ffff;padding:0px 3px;border-radius:3px;border:1px solid #a4becc">
+                    <option value=""></option>
+                   <option value="অ">অ</option>
+                    <option value="ই">ই</option>
+                    <option value="উ">উ</option>
+                    <option value="এ">এ</option>
+                    <option value="ক">ক</option>
+                    <option value="খ">খ</option>
+                    <option value="গ">গ</option>
+                    <option value="ঘ">ঘ</option>
+                    <option value="ঙ">ঙ</option>
+
+                    <option value="চ">চ</option>
+                    <option value="ছ">ছ</option>
+                    <option value="জ">জ</option>
+                    <option value="ঝ">ঝ</option>
+                    <option value="ত">ত</option>
+                    <option value="থ">থ</option>
+
+                    <option value="ঢ">ঢ</option>
+                    <option value="ড">ড</option>
+                    <option value="ট">ট</option>
+                    <option value="ঠ">ঠ</option>
+                    <option value="দ">দ</option>
+                    <option value="ধ">ধ</option>
+
+                    <option value="ন">ন</option>
+                    <option value="প">প</option>
+                    <option value="ফ">ফ</option>
+                    <option value="ব">ব</option>
+                    <option value="ভ">ভ</option>
+                    <option value="ম">ম</option>
+
+                    <option value="য">য</option>
+                    <option value="র">র</option>
+                    <option value="ল">ল</option>
+                    <option value="শ">শ</option>
+                    <option value="স">স</option>
+                    <option value="হ">হ</option>
+
+           
+                                
+                  </select>
+                </td>
+                <td width="25%">
+                  <input id="getIn_linc3" name="getIn_linc3" type="text"  style="width:100%;height:35px;background: #f7ffff;border-radius:3px;border:1px solid #a4becc" value=""   />
                 </td>
                 <td width="1%">&nbsp;&nbsp;<span>-</span></td>
                 <td width="25%">
-                  <input id="getIn_truck3" name="getIn_truck3" type="text"  style="width:100%;height:35px;background: #f7ffff;border-radius:3px;border:1px solid #a4becc" value=""   />
-                </td>
-                <td width="1%">&nbsp;&nbsp;<span>-</span></td>
-                <td width="25%">
-                  <input id="getIn_truck4" name="getIn_truck4" type="text"  style="width:100%;height:35px;background: #f7ffff;border-radius:3px;border:1px solid #a4becc" value=""   />
+                  <input id="getIn_linc4" name="getIn_linc4" type="text"  style="width:100%;height:35px;background: #f7ffff;border-radius:3px;border:1px solid #a4becc" value=""   />
                 </td>
                     </tr>
                   </table>
@@ -247,11 +280,11 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
             <br>
             <table width="100%" cellspacing="0"  id="tbl_get"  style="border-color:#999;background-color:#c8e8e8" >
               <tr >
-                <th style="border:1px solid #a1cad6;height:25px;text-align:left;">&nbsp; নং</th>
-                <th style="border:1px solid #a1cad6;height:25px;text-align:left;">&nbsp; চেকপয়েন্ট </th>
+                <th style="border:1px solid #a1cad6;height:25px">নং</th>
+                <th style="border:1px solid #a1cad6;height:25px">চেকপয়েন্ট </th>
           
-                <th style="border:1px solid #a1cad6;height:25px;text-align:left;">&nbsp; হ্যাঁ </th> 
-                <th style="border:1px solid #a1cad6;height:25px;text-align:left;">&nbsp; না</th> 
+                <th style="border:1px solid #a1cad6;height:25px">হ্যাঁ </th> 
+                <th style="border:1px solid #a1cad6;height:25px">না</th> 
 
               </tr>
               <tr >
@@ -266,17 +299,28 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                 </td>
 
               </tr>
-             
+              <tr>
+                <td width="10%" style="border:1px solid #a1cad6;height:25px">&nbsp;১.১</td>
+                <td width="70%" style="border:1px solid #a1cad6;height:25px">&nbsp;লাইসেন্স ঠিক আছে ?</td>
+                
+                <td width="10%" style="border:1px solid #a1cad6;height:25px">
+                  <input type="radio" style="display: block;margin-left:5px" id="getIn_licns_check" name="getIn_licns_check" value="হ্যাঁ "> 
+                </td> 
+                <td width="10%" style="border:1px solid #a1cad6;height:25px">
+                  <input checked type="radio" style="display: block;margin-left:5px" id="getIn_licns_check" name="getIn_licns_check" value="না"> 
+                </td>
+
+              </tr>
               <tr>
                 <td width="10%" style="border:1px solid #a1cad6;height:25px">&nbsp;২</td>
                 <td width="70%" style="border:1px solid #a1cad6;height:25px">&nbsp;সেফটি ব্রিফিং দেয়া হয়েছে ? <br>
 
                   <ul style="list-style: none;padding:3px">
-                    <li  style="padding: 3px">-সাইট এর ভিতরে সর্বোচ্চ গতিসীমা ১০ কিমি/ঘন্টা</li>
-                    <li  style="padding: 3px">-গাড়ি চালানো অবস্থায় মোবাইল ফোন ব্যাবহার করা নিষেধ</li>
-                    <li  style="padding: 3px;">-সিটবেল্ট বাঁধুন</li>
-                    <li  style="padding: 3px">-হেডলাইট অন রাখুন</li>
-                    <li  style="padding: 3px">-পিপিই পরিধান করুন</li>
+                    <li  style="padding: 3px">সাইট এর ভিতরে সর্বোচ্চ গতিসীমা ১০ কিমি/ঘন্টা</li>
+                    <li  style="padding: 3px">গাড়ি চালানো অবস্থায় মোবাইল ফোন ব্যাবহার করা নিষেধ</li>
+                    <li  style="padding: 3px;">সিটবেল্ট বাঁধুন</li>
+                    <li  style="padding: 3px">হেডলাইট অন রাখুন</li>
+                    <li  style="padding: 3px">পিপিই পরিধান করুন</li>
                   </ul>
                 </td>
                 <td width="10%" style="border:1px solid #a1cad6;height:25px">
@@ -287,18 +331,120 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                 </td>
 
               </tr>
-             
-              
               <tr>
                 <td width="10%" style="border:1px solid #a1cad6;height:25px">&nbsp;৩</td>
+                <td width="70%" style="border:1px solid #a1cad6;height:25px">&nbsp;সকল টায়ার এর অবস্থা ঠিক আছে ?</td>
+                
+                <td width="10%" style="border:1px solid #a1cad6;height:25px">
+                  <input type="radio" style="display: block;margin-left:5px" id="getIn_tire" name="getIn_tire" value="হ্যাঁ "> 
+                </td> 
+                <td width="10%" style="border:1px solid #a1cad6;height:25px">
+                  <input checked type="radio" style="display: block;margin-left:5px" id="getIn_tire" name="getIn_tire" value="না"> 
+                </td>
+
+              </tr>
+              <tr>
+                <td width="10%" style="border:1px solid #a1cad6;height:25px">&nbsp;৪</td>
+                <td width="70%" style="border:1px solid #a1cad6;height:25px">&nbsp;হেড লাইট, ব্রেক লাইট ও ব্যাক লাইট ঠিক আছে ?</td>
+                
+                <td width="10%" style="border:1px solid #a1cad6;height:25px">
+                  <input type="radio" style="display: block;margin-left:5px" id="getIn_ligth" name="getIn_ligth" value="হ্যাঁ "> 
+                </td> 
+                <td width="10%" style="border:1px solid #a1cad6;height:25px">
+                  <input checked type="radio" style="display: block;margin-left:5px" id="getIn_ligth" name="getIn_ligth" value="না"> 
+                </td>
+
+              </tr>
+              <tr>
+                <td width="10%" style="border:1px solid #a1cad6;height:25px">&nbsp;৫</td>
+                <td width="70%" style="border:1px solid #a1cad6;height:25px">&nbsp;হর্ন ঠিক আছে ?</td>
+                
+                <td width="10%" style="border:1px solid #a1cad6;height:25px">
+                  <input type="radio" style="display: block;margin-left:5px" id="getIn_horn" name="getIn_horn" value="হ্যাঁ "> 
+                </td> 
+                <td width="10%" style="border:1px solid #a1cad6;height:25px">
+                  <input checked type="radio" style="display: block;margin-left:5px" id="getIn_horn" name="getIn_horn" value="না"> 
+                </td>
+
+              </tr>
+              <tr>
+                <td width="10%" style="border:1px solid #a1cad6;height:25px">&nbsp;৬</td>
+                <td width="70%" style="border:1px solid #a1cad6;height:25px">&nbsp;উইন্দশিল্ড ঠিক আছে ?</td>
+                
+<td width="10%" style="border:1px solid #a1cad6;height:25px">
+                  <input type="radio" style="display: block;margin-left:5px" id="getIn_windshild" name="getIn_windshild" value="হ্যাঁ "> 
+                </td> 
+                <td width="10%" style="border:1px solid #a1cad6;height:25px">
+                  <input checked type="radio" style="display: block;margin-left:5px" id="getIn_windshild" name="getIn_windshild" value="না"> 
+                </td>
+
+              </tr>
+              <tr>
+                <td width="10%" style="border:1px solid #a1cad6;height:25px">&nbsp;৭</td>
+                <td width="70%" style="border:1px solid #a1cad6;height:25px">&nbsp;লুকিং গ্লাস ঠিক আছে ?</td>
+              
+<td width="10%" style="border:1px solid #a1cad6;height:25px">
+                  <input type="radio" style="display: block;margin-left:5px" id="getIn_glass" name="getIn_glass" value="হ্যাঁ "> 
+                </td> 
+                <td width="10%" style="border:1px solid #a1cad6;height:25px">
+                  <input checked type="radio" style="display: block;margin-left:5px" id="getIn_glass" name="getIn_glass" value="না"> 
+                </td>
+
+              </tr>
+              <tr>
+                <td width="10%" style="border:1px solid #a1cad6;height:25px">&nbsp;৮</td>
+                <td width="70%" style="border:1px solid #a1cad6;height:25px">&nbsp;ওয়াইপার ব্লেড ঠিক আছে ?</td>
+                
+<td width="10%" style="border:1px solid #a1cad6;height:25px">
+                  <input type="radio" style="display: block;margin-left:5px" id="getIn_wiper" name="getIn_wiper" value="হ্যাঁ "> 
+                </td> 
+                <td width="10%" style="border:1px solid #a1cad6;height:25px">
+                  <input checked type="radio" style="display: block;margin-left:5px" id="getIn_wiper" name="getIn_wiper" value="না"> 
+                </td>
+
+              </tr>
+              <tr>
+                <td width="10%" style="border:1px solid #a1cad6;height:25px">&nbsp;৯</td>
                 <td width="70%" style="border:1px solid #a1cad6;height:25px">&nbsp;পিপিই দেয়া হয়েছে ?  </td>
-                <td width="10%" style="border:1px solid #a1cad6;height:25px;text-align:left;">&nbsp; <b>হ্যাঁ </b>
+                <td width="10%" style="border:1px solid #a1cad6;height:25px">
+                  <input type="radio" style="display: block;margin-left:5px" id="ppe_getIn" name="ppe_getIn" value="হ্যাঁ "> 
 				        </td> 
-                <td width="10%" style="border:1px solid #a1cad6;height:25px;text-align:left;">&nbsp;<b> না</b>
+                <td width="10%" style="border:1px solid #a1cad6;height:25px">
+        		<input checked type="radio" style="display: block;margin-left:5px" id="ppe_getIn" name="ppe_getIn" value="না"> 
                 </td>
               </tr>
               <tr>
-                <td width="10%" style="border:1px solid #a1cad6;height:25px">&nbsp;৩.ক</td>
+                <td width="10%" style="border:1px solid #a1cad6;height:25px">&nbsp;৯.১</td>
+                <td width="70%" style="border:1px solid #a1cad6;height:25px">&nbsp;নিজস্ব বাল্কার </td>
+                <td width="10%" style="border:1px solid #a1cad6;height:25px">
+                  <input type="radio" style="display: block;margin-left:5px" id="bulker" name="bulker" value="হ্যাঁ "> 
+                </td> 
+                <td width="10%" style="border:1px solid #a1cad6;height:25px">
+                  <input checked type="radio" style="display: block;margin-left:5px" id="bulker" name="bulker" value="না"> 
+                </td>
+              </tr>
+              <tr>
+                <td width="10%" style="border:1px solid #a1cad6;height:25px">&nbsp;৯.২</td>
+                <td width="70%" style="border:1px solid #a1cad6;height:25px">&nbsp;চুক্তিবদ্ধ ট্রাক  </td>
+                <td width="10%" style="border:1px solid #a1cad6;height:25px">
+                  <input type="radio" style="display: block;margin-left:5px" id="contrac_truck" name="contrac_truck" value="হ্যাঁ "> 
+                </td> 
+                <td width="10%" style="border:1px solid #a1cad6;height:25px">
+                  <input checked type="radio" style="display: block;margin-left:5px" id="contrac_truck" name="contrac_truck" value="না"> 
+                </td>
+              </tr>
+              <tr>
+                <td width="10%" style="border:1px solid #a1cad6;height:25px">&nbsp;৯.৩</td>
+                <td width="70%" style="border:1px solid #a1cad6;height:25px">&nbsp;পিকআপ ট্রাক/স্পট ট্রাক</td>
+                <td width="10%" style="border:1px solid #a1cad6;height:25px">
+                  <input type="radio" style="display: block;margin-left:5px" id="spot_truck" name="spot_truck" value="হ্যাঁ "> 
+                </td> 
+                <td width="10%" style="border:1px solid #a1cad6;height:25px">
+                  <input checked type="radio" style="display: block;margin-left:5px" id="spot_truck" name="spot_truck" value="না"> 
+                </td>
+              </tr>
+              <tr>
+                <td width="10%" style="border:1px solid #a1cad6;height:25px">&nbsp;৯.ক</td>
                 <td width="70%" style="border:1px solid #a1cad6;height:25px">&nbsp;সেফটি শ্যু  </td>
                 <td width="10%" style="border:1px solid #a1cad6;height:25px">
                   <input type="radio" style="display: block;margin-left:5px" id="safety_shoe" name="safety_shoe" value="হ্যাঁ "> 
@@ -308,7 +454,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                 </td>
               </tr>
               <tr>
-                <td width="10%" style="border:1px solid #a1cad6;height:25px">&nbsp;৩.খ</td>
+                <td width="10%" style="border:1px solid #a1cad6;height:25px">&nbsp;৯.খ</td>
                 <td width="70%" style="border:1px solid #a1cad6;height:25px">&nbsp;হাই ভিসিবিলিটি ভেস্ট </td>
                 <td width="10%" style="border:1px solid #a1cad6;height:25px">
                   <input type="radio" style="display: block;margin-left:5px" id="high_visibility" name="high_visibility" value="হ্যাঁ "> 
@@ -318,7 +464,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                 </td>
               </tr>
               <tr>
-                <td width="10%" style="border:1px solid #a1cad6;height:25px">&nbsp;৩.গ</td>
+                <td width="10%" style="border:1px solid #a1cad6;height:25px">&nbsp;৯.গ</td>
                 <td width="70%" style="border:1px solid #a1cad6;height:25px">&nbsp;সেফটি গগলস </td>
                 <td width="10%" style="border:1px solid #a1cad6;height:25px">
                   <input type="radio" style="display: block;margin-left:5px" id="safety_goggles" name="safety_goggles" value="হ্যাঁ "> 
@@ -328,7 +474,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                 </td>
               </tr>
               <tr>
-                <td width="10%" style="border:1px solid #a1cad6;height:25px">&nbsp;৩.ঘ</td>
+                <td width="10%" style="border:1px solid #a1cad6;height:25px">&nbsp;৯.ঘ</td>
                 <td width="70%" style="border:1px solid #a1cad6;height:25px">&nbsp;হার্ড হ্যাট </td>
                 
                 <td width="10%" style="border:1px solid #a1cad6;height:25px">
@@ -371,11 +517,6 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
           <div class="panel" id="get_Page_inlist" style="background-color:#c8e8e8">
             </br></br></br></br></br>
             <div id="myerror_get" style="color:#C00"></div> 
-
-            <div>
-              
-              <!-- <select id="truck_info" onChange="search_truck_info()" name="truck_info" style="width:100%;height:35px;padding:0px 3px;background: #f7ffff;border-radius:3px;border:1px solid #a4becc"> </select> -->
-            </div>
             <div >
                 
                 <div id="get_Page_inlist_li"></div>
@@ -412,34 +553,21 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                 <td width="30%"><b>তারিখ ও সময় :</b></td>
                 <td width="70%"><input type="text" readonly id="getOut_date" name="getOut_date" style="width:100%;height:35px;background: #f7ffff;border-radius:3px;border:1px solid #a4becc" value=""   /></td>
               </tr>
-
-<!-- =========================== chanege2  start=============== -->
               <tr>
 
-                <td width="30%">
-                  <b>মোবাইল নম্বর  :</b>
-
-
-                </td>
-                <td width="70%"><input type="number" readonly id="getOut_mobile_no" name="getOut_mobile_no" style="width:100%;height:35px;background: #f7ffff;border-radius:3px;border:1px solid #a4becc"   placeholder="মোবাইল নম্বর " value=""   /></td>
+                <td width="30%"><b>লাইসেন্স নাম্বার  :</b></td>
+                <td width="70%"><input type="text" readonly id="getOut_licns_no" name="getOut_licns_no" style="width:100%;height:35px;background: #f7ffff;border-radius:3px;border:1px solid #a4becc" placeholder="লাইসেন্স নাম্বার " value=""   /></td>
               </tr>
               <tr>
-
-                <td width="30%">
-                  <b>ট্রাক এর নাম্বার :</b>
-                  <!-- <b>লাইসেন্স নাম্বার  :</b> -->
-                </td>
-                <td width="70%"><input type="text" readonly id="getOut_truck_no" name="getOut_truck_no" style="width:100%;height:35px;background: #f7ffff;border-radius:3px;border:1px solid #a4becc" placeholder="ট্রাক এর নাম্বার " value=""   /></td>
-              </tr>
-              <tr>
-                <td width="30%">
-                  <b>ড্রাইভার এর নাম  :</b>
-                </td>
+                <td width="30%"><b>ড্রাইভার এর নাম  :</b></td>
                 <td width="70%"><input type="text" readonly id="getOut_drv_name" name="getOut_drv_name" style="width:100%;height:35px;background: #f7ffff;border-radius:3px;border:1px solid #a4becc" placeholder="ড্রাইভার এর নাম " value=""   /></td>
               </tr>
-              
+              <tr>
+
+                <td width="30%"><b>ট্রাক এর নাম্বার :</b></td>
+                <td width="70%"><input type="text" readonly id="getOut_trc_no" name="getOut_trc_no" style="width:100%;height:35px;background: #f7ffff;border-radius:3px;border:1px solid #a4becc" placeholder="ট্রাক এর নাম্বার " value=""   /></td>
+              </tr>
              
-<!-- =========================== chanege2  end=============== -->
 
             </table>
             <br>
@@ -457,85 +585,38 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
               
               <tr >
                  <th style="border:1px solid #a1cad6;height:25px">নং</th>
-                <th style="border:1px solid #a1cad6;height:25px">পিপিই ফেরত নেয়া হয়েছে ?</th>
+                <th style="border:1px solid #a1cad6;height:25px">চেকপয়েন্ট </th>
                 <th style="border:1px solid #a1cad6;height:25px">হ্যাঁ </th> 
                 <th style="border:1px solid #a1cad6;height:25px">না</th> 
 
               </tr>
-              <!-- ==================== change3 start ================== -->
-             
-              
-              
               <tr >
-                <td width="10%" style="border:1px solid #a1cad6;height:25px">&nbsp;১.ক</td>
-                <td width="70%" style="border:1px solid #a1cad6;height:25px">&nbsp; সেফটি শ্যূ<br>
-                  
-                </td>
+                <td width="10%" style="border:1px solid #a1cad6;height:25px">&nbsp;১</td>
+                <td width="70%" style="border:1px solid #a1cad6;height:25px">&nbsp;পিপিই ফেরত নেয়া হয়েছে ?<br>
+				          <ul style="list-style: none;padding:3px">
+                    <li  style="padding: 3px">১.ক সেফটি শ্যূ</li>
+                    <li  style="padding: 3px">১.খ হাই ভিসিবিলিটি ভেস্ট</li>
+                    <li  style="padding: 3px">১.গ সেফটি গগলস</li>
+                    <li  style="padding: 3px">১.ঘ হার্ড হ্যাট</li>
+                  </ul>
+				        </td>
 
                 <td width="10%" style="border:1px solid #a1cad6;height:25px">
-                  <input type="radio" style="display: block;margin-left:5px" id="ppe_out_ss" name="ppe_out_ss" value="হ্যাঁ "> 
+                  <input type="radio" style="display: block;margin-left:5px" id="ppe_out_yn" name="ppe_out_yn" value="হ্যাঁ "> 
                 </td> 
                 <td width="10%" style="border:1px solid #a1cad6;height:25px">
-                  <input checked type="radio" style="display: block;margin-left:5px" id="ppe_out_ss" name="ppe_out_ss" value="না"> 
+                  <input type="radio" style="display: block;margin-left:5px" id="ppe_out_yn" name="ppe_out_yn" value="না"> 
                 </td>
               </tr>
-        
-              
-              <tr >
-                <td width="10%" style="border:1px solid #a1cad6;height:25px">&nbsp;১.খ</td>
-                <td width="70%" style="border:1px solid #a1cad6;height:25px">&nbsp; হাই ভিসিবিলিটি ভেস্ট<br>
-                  
-                </td>
-
-                <td width="10%" style="border:1px solid #a1cad6;height:25px">
-                  <input type="radio" style="display: block;margin-left:5px" id="ppe_out_hv" name="ppe_out_hv" value="হ্যাঁ "> 
-                </td> 
-                <td width="10%" style="border:1px solid #a1cad6;height:25px">
-                  <input checked type="radio" style="display: block;margin-left:5px" id="ppe_out_hv" name="ppe_out_hv" value="না"> 
-                </td>
-              </tr>
-              
-              <tr >
-                <td width="10%" style="border:1px solid #a1cad6;height:25px">&nbsp;১.গ</td>
-                <td width="70%" style="border:1px solid #a1cad6;height:25px">&nbsp; সেফটি গগলস<br>
-                  
-                </td>
-
-                <td width="10%" style="border:1px solid #a1cad6;height:25px">
-                  <input type="radio" style="display: block;margin-left:5px" id="ppe_out_sg" name="ppe_out_sg" value="হ্যাঁ "> 
-                </td> 
-                <td width="10%" style="border:1px solid #a1cad6;height:25px">
-                  <input checked type="radio" style="display: block;margin-left:5px" id="ppe_out_sg" name="ppe_out_sg" value="না"> 
-                </td>
-              </tr>
-              
-              <tr >
-                <td width="10%" style="border:1px solid #a1cad6;height:25px">&nbsp;১.ঘ</td>
-                <td width="70%" style="border:1px solid #a1cad6;height:25px">&nbsp; হার্ড হ্যাট<br>
-                  
-                </td>
-
-                <td width="10%" style="border:1px solid #a1cad6;height:25px">
-                  <input type="radio" style="display: block;margin-left:5px" id="ppe_out_hh" name="ppe_out_hh" value="হ্যাঁ "> 
-                </td> 
-                <td width="10%" style="border:1px solid #a1cad6;height:25px">
-                  <input checked type="radio" style="display: block;margin-left:5px" id="ppe_out_hh" name="ppe_out_hh" value="না"> 
-                </td>
-              </tr>
-              <tr>
+			  <tr>
+			  <td >&nbsp;</td>
                 <td >&nbsp;</td>
                 <td >&nbsp;</td>
-                <td >&nbsp;</td>
-              </tr>
-              <tr>
-                <td></td>
-              </tr>
-            </table>
-
-
-              <!-- ==================== change3 end ================== -->
-
-            <br><br>
+				</tr>
+        <tr>
+          <td></td>
+        </tr>
+       </table><br><br>
 
            <img id="get_out_wimg" style="width:50px" src="loading.gif" alt="">   
         <div id="error_getout_page" style="color:#C00"></div>
@@ -549,8 +630,13 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                 </div>
               </td>
 
-              
-              <!-- ==================== change4  ================== -->
+              <td > 
+                <div id="sub_btn" style="color:#C00">
+            
+                  <input type="submit" id="getOut_cancel" name="getOut_cancel"  onClick="get_cancel();" value="Cancel"   />
+
+                </div>
+              </td>
             </tr>
           </table>   
         </div>

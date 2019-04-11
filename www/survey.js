@@ -1062,7 +1062,7 @@ function exit_page() {
 	
 	
 	$.afui.loadContent("#login",true,true,'right');
-	location.reload();
+	//location.reload();
 
 }
 

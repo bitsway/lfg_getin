@@ -35,9 +35,6 @@ $(document).ready(function(){
 	getLocationInfo_ready();
 	
 
-	$("#get_in_wimg_c").hide();
-	$("#empty_field_msg_c").hide();
-
 	$("#error_getin_page").html('');
 	$("#empty_field_msg").hide();
 	$("#get_in_wimg").hide();
@@ -60,6 +57,7 @@ $(document).ready(function(){
 	//alert (parseInt(day))
 	var today=  year + "-" + month + "-" + day
 	localStorage.today=today;
+
 
 	//currentDate=2016-03-11
 	//localStorage.synced=''
@@ -334,23 +332,6 @@ function get_login() {
 function afterSync(){
 
 
-	
-	// $("#getIn_drvName").val('');
- //    $("#getIn_mobileNo").val('');
- //    $("#getIn_truck1").val('');
- //    $("#getIn_truck2").val('');
- //    $("#getIn_truck3").val('');
- //    $("#getIn_truck4").val('');
-
- //   	$("#getIn_driv_licns_check").val('');
-	// $("#getIn_safty_brf").val('');
-
-
- //    $("#safety_shoe").val('');
- //    $("#high_visibility").val('');
- //    $("#safety_goggles").val('');
- //    $("#hard_hat").val('');
-	
 }
 
 function homePage() {
@@ -378,7 +359,7 @@ function lafarge_app() {
 	cid=$.trim(cid);
 	
 	//var  apipath_base_photo_dm='http://127.0.0.1:8000/lafarge/syncmobile_lafarge/dmpath?CID='+localStorage.cid +'&HTTPPASS=e99business321cba'
-	var  apipath_base_photo_dm='http://w02.yeapps.com/lfggatein/syncmobile_lafarge/dmpath?CID='+localStorage.cid +'&HTTPPASS=e99business321cba'			 	 
+	var  apipath_base_photo_dm='http://w02.yeapps.com/lfg_getin/syncmobile_lafarge/dmpath?CID='+localStorage.cid +'&HTTPPASS=e99business321cba'			 	 
 	
 	//alert(apipath_base_photo_dm)
 	
@@ -388,11 +369,11 @@ function lafarge_app() {
 	user_id=$.trim(user_id);
 	
 	if (user_id=="" || user_id==undefined || user_pass=="" || user_pass==undefined){
-		
-		// var url = "#login";      
-		// $.mobile.navigate(url);
+		var url = "#login";      
+		$.mobile.navigate(url);
 		$("#error_login").html("Required User ID and Password");	
 	}else{
+
 		$("#loginButton").hide();
 		$("#wait_image_login").show();
 		$("#error_logintext").val(apipath_base_photo_dm);
@@ -412,7 +393,7 @@ function lafarge_app() {
 					var dtaStr=data.replace('<start>','').replace('<end>','')
 					var resultArray = dtaStr.split('<fd>');	
 					 //alert(resultArray)
-					var apiPath=resultArray[0]
+					// var apiPath=resultArray[0]
 					$("#error_login").html('');
 					if(resultArray.length>1){
 						var base_url=resultArray[0];
@@ -523,7 +504,6 @@ function lafarge_app() {
 		
 
 function get_in() {	
-	$("#error_getin_page").html('');
 	$("#empty_field_msg").hide();
 	$("#get_in_wimg").hide();
 	$.afui.loadContent("#get_Page_in",true,true,'right');
@@ -696,6 +676,10 @@ function get_out() {
 	$.afui.loadContent("#get_Page_inlist",true,true,'right');
 }
 
+function get_cancel(){
+	get_out()
+}
+
 function get_inList_information(i) {
 		$("#get_out_wimg").hide();
 		var input_id='input_'+i.toString()
@@ -834,200 +818,6 @@ function back_page_get() {
 	$.afui.loadContent("#pageHome",true,true,'right');
 }
 
-
-
-// ===================== 20190410
-
-function gateIn_cancel(){
-	$("#get_in_wimg_c").hide();
-		$("#empty_field_msg_c").hide();
-
-    //alert(localStorage.base_url+'get_in_list?cid='+localStorage.cid+'&user_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass)
-
-    $.ajax(localStorage.base_url+'get_in_list?cid='+localStorage.cid+'&user_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass,{
-                                // cid:localStorage.cid,user_id:localStorage.user_id,rep_pass:localStorage.user_pass,synccode:localStorage.synccode,
-        type: 'POST',
-        timeout: 30000,
-        error: function(xhr) {
-
-            $("#wait_image_login").hide();
-            $("#loginButton").show();
-            $("#error_login").html('Network Timeout. Please check your Internet connection..2');
-        },
-        success:function(data, result,xhr){ 
-            
-             var resultArray = data.replace('</START>','').replace('</END>','').split('<SYNCDATA>');
-
-            if (resultArray[0]=='SUCCESS'){     
-                                
-                localStorage.getinListstr=resultArray[1];
-                getinListstr=localStorage.getinListstr
-                var getinListstr = localStorage.getinListstr.split('<rd>');
-                var getinListstrShowLength=getinListstr.length  
-                
-                
-                var get_list_tr=''
-                var get_inlisth=''
-                localStorage.get_inlisth=''
-                get_list_tr='<table width="100%" border="0" cellspacing="0"><tr><td style="border:1px solid #a1cad6;height:25px" width="10%">Depot</td><td style="border:1px solid #a1cad6;height:25px" width="10%">Sl</td><td style="border:1px solid #a1cad6;height:25px" width="30%">Mobile No</td><td style="border:1px solid #a1cad6;height:25px" width="30%">Truck No</td><td style="border:1px solid #a1cad6;height:25px" width="40%">In Time</td><td style="border:1px solid #a1cad6;height:25px"></td></tr>'    
-                for (var i=0; i < getinListstrShowLength; i++){
-                    var depotValueArray = getinListstr[i].split('<fd>');
-                    depotID=depotValueArray[0];
-
-                    sl=depotValueArray[1];
-                    getinTime=depotValueArray[2];
-                    truck_no=depotValueArray[3];
-                    driver_name=depotValueArray[4];
-                    getOutmobile_no=depotValueArray[5];
-
-                    var input_id='input_'+i.toString()
-                  // ============= CHECK ==============
-                    get_list_tr+='<tr><td style="border:1px solid #a1cad6;height:25px" width="10%">'+depotID+'</td><td style="border:1px solid #a1cad6;height:25px" width="10%">'+sl+'</td><td style="border:1px solid #a1cad6;height:25px" width="30%">'+getOutmobile_no+'</td><td style="border:1px solid #a1cad6;height:25px" width="30%">'+truck_no+'</td><td style="border:1px solid #a1cad6;height:25px" width="40%">'+getinTime+'</td><td style="border:1px solid #a1cad6;height:25px" onclick="gateIn_cancel_list(\''+i+'\');"><input type="hidden" value="'+depotValueArray+'"  id="'+input_id+'"> >> </td></tr>'                                                        
-                        
-                get_inlisth=get_inlisth+'<input  name="'+input_id+'" id="'+input_id+'"  value="'+depotValueArray+'" type="hidden">'
-                                    
-                }
-                get_list_tr+='</table>'
-                localStorage.get_list_tr=get_list_tr;
-
-                
-                $('#get_Page_inlist_li').empty();
-                $('#get_Page_inlist_li').append(localStorage.get_list_tr);
-            }else{
-                $.afui.loadContent("#empty_msg",true,true,'right');
-                                
-            }
-            
-            
-        },
-        error: function(result) {
-                                    
-            $("#error_login").html("Network error has occurred please try again!");
-            $("#wait_image_login").hide();
-            $("#loginButton").show();
-        }
-    }); //Second Hit
-
-		
-
-    $.afui.loadContent("#get_Page_inlist",true,true,'right');
-}
-
-
-
-
-function gateIn_cancel_list(i) {
-	$("#get_in_wimg_c").hide();
-		$("#empty_field_msg").hide();
-
-
-		var input_id='input_'+i.toString()
-
-		var get_listval=$("#"+input_id).val();
-		
-		localStorage.get_listval=get_listval
-		var get_listvalstr = localStorage.get_listval.split(',');
-
-       var getInSl_cancel=get_listvalstr[1];
-       var getinTime=get_listvalstr[2];
-       var truck_info_c=get_listvalstr[3];
-
-       var getIn_drvName_c=get_listvalstr[4];
-       
-      
-       var getIn_mobileNo_c=get_listvalstr[5];
-		
-		localStorage.truck_info_c=truck_info_c
-		var truckInfo_c = localStorage.truck_info_c.split('-');
-       var getIn_truck1_c=truckInfo_c[0];
-
-		var getIn_truck2_c=truckInfo_c[1];
-		var getIn_truck3_c=truckInfo_c[2];
-		var getIn_truck4_c=truckInfo_c[3];
-      
-
-       	$("#getIn_drvName_c").val(getIn_drvName_c);
-
-	    $("#getIn_mobileNo_c").val(getIn_mobileNo_c);
-	    $("#getIn_truck1_c").val(getIn_truck1_c);
-	    $("#getIn_truck2_c").val(getIn_truck2_c);
-	    $("#getIn_truck3_c").val(getIn_truck3_c);
-	    $("#getIn_truck4_c").val(getIn_truck4_c);
-	    $("#getInSl_cancel").val(getInSl_cancel);
-
-
-	 //   	$("#getIn_driv_licns_check").val('');
-		// $("#getIn_safty_brf").val('');
-
-
-	 //    $("#safety_shoe").val('');
-	 //    $("#high_visibility").val('');
-	 //    $("#safety_goggles").val('');
-	 //    $("#hard_hat").val('');
-		// $("#empty_field_msg").hide();
-		
-		$("#get_in_wimg_c").hide();
-		$("#empty_field_msg_c").hide();
-
-	$.afui.loadContent("#get_Page_in_cancel",true,true,'right');	
-}
-
-
-
-function getIn_cancel() {
-
-    $("#error_getin_page_c").html('');
-    $("#get_in_wimg_c").show();
-   
-    var getInSl_cancel=$("#getInSl_cancel").val();
-   
-    $.ajax(localStorage.base_url+'get_in_cancel?cid='+localStorage.cid+'&user_id='+localStorage.user_id+'&user_pass='+localStorage.user_pass+'&getInSl_cancel='+getInSl_cancel,{
-
-        type: 'POST',
-        timeout: 30000,
-        error: function(xhr) {
-            $("#get_in_wimg_c").hide();
-            $("#error_getin_page_c").html('Network Timeout. Please check your Internet connection..');
-        },
-        success:function(data, status,xhr){ 
-          
-            if (status!='success'){
-                $("#error_getin_page_c").html('Network Timeout. Please check your Internet connection...');
-            }
-            else{   
-                var resultArray = data.replace('</START>','').replace('</END>','').split('<SYNCDATA>'); 
-                
-                if (resultArray[0]=='FAILED'){
-                    $("#error_getin_page_c").text(resultArray[1]);   
-                        
-                }
-                else if (resultArray[0]=='SUCCESS'){    
-                    // var result_string=resultArray[1];
-                    // alert ('cancel')
-                     $.afui.loadContent("#cancel_msg",true,true,'right');          
-                        reload_function();          
-                   
-
-                    $("#error_getin_page_c").html('')
-                    
-                
-                }else{  
-                     $("#get_in_wimg_c").hide();
-                     $("#error_getin_page_c").html('Network Timeout. Please check your Internet connection..');
-                }
-            }
-        }
-    });//end ajax
-}
-    
-
-
-
-
-
-
-
-
 // function homePage() {	
 // 	$.afui.loadContent("#pageHome",true,true,'right');
 
@@ -1044,32 +834,22 @@ function login_page() {
 
 	  
 
-function exit_page() {
-
-	localStorage.cid='';
-	localStorage.user_id='';
-	localStorage.user_pass='';
-	localStorage.synced=='NO'
-	
-	 
+function exit_page() {	
 	$("#loginButton").show();
 
 	$("#wait_image_login").hide();
 	
-	$("#user_id").val('');
-	$("#user_pass").val('');
-	
-	
-	
 	$.afui.loadContent("#login",true,true,'right');
-	location.reload();
-
 }
-
 
 // ======================== shima end ================
 
 
+function exit() {	
+
+	// $.afui.loadContent("#login",true,true,'right');
+	navigator.app.exitApp();
+}
 
 /*********** jahangirEditedEnd16Feb medClick  *********/
 $('#ThumbnailTest_buttonTakePhotosNow').click(function(){

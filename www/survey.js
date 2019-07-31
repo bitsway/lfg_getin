@@ -377,12 +377,9 @@ function lafarge_app() {
 	var cid=$("#cid").val().toUpperCase();
 	cid=$.trim(cid);
 	
+	
 	//Nazma Azam 2019-07-25 start
-	
-	//var  apipath_base_photo_dm='http://127.0.0.1:8000/lfggatein/syncmobile_lafarge/dmpath?CID='+localStorage.cid +'&HTTPPASS=e99business321cba'
-	
-	
-	
+	//var  apipath_base_photo_dm='http://127.0.0.1:8000/lafarge/syncmobile_lafarge/dmpath?CID='+localStorage.cid +'&HTTPPASS=e99business321cba'
 	var  apipath_base_photo_dm='http://w02.yeapps.com/lfggatein/syncmobile_lafarge_new/dmpath?CID='+localStorage.cid +'&HTTPPASS=e99business321cba'			 	 
 	//Nazma Azam 2019-07-25 end
 	//alert(apipath_base_photo_dm)
@@ -780,7 +777,6 @@ function get_out_submit() {
 	var ppe_out_sg= ($('#ppe_out_sg').is(':checked') ? 1 : 0);
 	var ppe_out_hh= ($('#ppe_out_hh').is(':checked') ? 1 : 0);
 	
-	
 	//Nazma Azam 2019-07-25 strat
 	
 	var ppe_own= ($('#ppe_own').is(':checked') ? 1 : 0);
@@ -797,7 +793,6 @@ function get_out_submit() {
 
 
 			//Nazma Azam 2019-07-25 end
-
 
 		type: 'POST',
 		timeout: 30000,

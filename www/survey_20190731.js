@@ -377,14 +377,9 @@ function lafarge_app() {
 	var cid=$("#cid").val().toUpperCase();
 	cid=$.trim(cid);
 	
-	//Nazma Azam 2019-07-25 start
+	//var  apipath_base_photo_dm='http://127.0.0.1:8000/lafarge/syncmobile_lafarge/dmpath?CID='+localStorage.cid +'&HTTPPASS=e99business321cba'
+	var  apipath_base_photo_dm='http://w02.yeapps.com/lfggatein/syncmobile_lafarge/dmpath?CID='+localStorage.cid +'&HTTPPASS=e99business321cba'			 	 
 	
-	//var  apipath_base_photo_dm='http://127.0.0.1:8000/lfggatein/syncmobile_lafarge/dmpath?CID='+localStorage.cid +'&HTTPPASS=e99business321cba'
-	
-	
-	
-	var  apipath_base_photo_dm='http://w02.yeapps.com/lfggatein/syncmobile_lafarge_new/dmpath?CID='+localStorage.cid +'&HTTPPASS=e99business321cba'			 	 
-	//Nazma Azam 2019-07-25 end
 	//alert(apipath_base_photo_dm)
 	
 	var user_id=$("#user_id").val();
@@ -780,24 +775,9 @@ function get_out_submit() {
 	var ppe_out_sg= ($('#ppe_out_sg').is(':checked') ? 1 : 0);
 	var ppe_out_hh= ($('#ppe_out_hh').is(':checked') ? 1 : 0);
 	
-	
-	//Nazma Azam 2019-07-25 strat
-	
-	var ppe_own= ($('#ppe_own').is(':checked') ? 1 : 0);
-	
-	var ppe_note= $('#ppe_note').val()
-	
-		
-
-	
-	
  // var test_vaoln=$("#test_on").val(localStorage.base_url+'get_out_submit?cid='+localStorage.cid+'&user_id='+localStorage.user_id+'&user_pass='+localStorage.user_pass+'&getInSl='+getInSl+'&getOut_date='+getOut_date+'&getOut_truck_no='+getOut_truck_no+'&getOut_drv_name='+getOut_drv_name+'&getOut_mobile_no='+getOut_mobile_no+'&ppe_out_n='+ppe_out_n)
- //alert(localStorage.base_url+'get_out_submit?cid='+localStorage.cid+'&user_id='+localStorage.user_id+'&user_pass='+localStorage.user_pass+'&getInSl='+getInSl+'&getOut_date='+getOut_date+'&getOut_truck_no='+getOut_truck_no+'&getOut_drv_name='+getOut_drv_name+'&getOut_mobile_no='+getOut_mobile_no+'&ppe_out_ss='+ppe_out_ss+'&ppe_out_hv='+ppe_out_hv+'&ppe_out_sg='+ppe_out_sg+'&ppe_out_hh='+ppe_out_hh+'&ppe_own='+ppe_own+'&ppe_note='+ppe_note)
-	$.ajax(localStorage.base_url+'get_out_submit?cid='+localStorage.cid+'&user_id='+localStorage.user_id+'&user_pass='+localStorage.user_pass+'&getInSl='+getInSl+'&getOut_date='+getOut_date+'&getOut_truck_no='+getOut_truck_no+'&getOut_drv_name='+getOut_drv_name+'&getOut_mobile_no='+getOut_mobile_no+'&ppe_out_ss='+ppe_out_ss+'&ppe_out_hv='+ppe_out_hv+'&ppe_out_sg='+ppe_out_sg+'&ppe_out_hh='+ppe_out_hh+'&ppe_own='+ppe_own+'&ppe_note='+ppe_note,{
-
-
-			//Nazma Azam 2019-07-25 end
-
+ 				// alert(localStorage.base_url+'get_out_submit?cid='+localStorage.cid+'&user_id='+localStorage.user_id+'&user_pass='+localStorage.user_pass+'&getInSl='+getInSl+'&getOut_date='+getOut_date+'&getOut_truck_no='+getOut_truck_no+'&getOut_drv_name='+getOut_drv_name+'&getOut_mobile_no='+getOut_mobile_no)
+	$.ajax(localStorage.base_url+'get_out_submit?cid='+localStorage.cid+'&user_id='+localStorage.user_id+'&user_pass='+localStorage.user_pass+'&getInSl='+getInSl+'&getOut_date='+getOut_date+'&getOut_truck_no='+getOut_truck_no+'&getOut_drv_name='+getOut_drv_name+'&getOut_mobile_no='+getOut_mobile_no+'&ppe_out_ss='+ppe_out_ss+'&ppe_out_hv='+ppe_out_hv+'&ppe_out_sg='+ppe_out_sg+'&ppe_out_hh='+ppe_out_hh,{
 
 		type: 'POST',
 		timeout: 30000,

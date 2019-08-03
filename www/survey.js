@@ -22,7 +22,29 @@ $.afui.useOSThemes=false;
 
 $(document).ready(function(){
     $.afui.launch();
+	//Nazma Azam 2019-07-25 start
+//	if( $("#ppe_own").val() == 'yes'){
+//	$("#div_ppe_note").hide();
+//	}
+//
+//	
+//	if( $("#ppe_own").val() == 'no'){
+//	$("#div_ppe_note").show();
+//	}
 
+		//ppe_show()
+//	var ppe_own_val=$("#ppe_own").val()
+//	if( ppe_own_val== 'yes'){
+//	$("#div_ppe_note").hide();
+//	}
+//	else{
+//	$("#div_ppe_note").show();
+//	}
+		
+		
+		
+	//Nazma Azam 2019-07-25 end
+	
 	localStorage.location_error=''
 	$("#wait_image_login").hide();
 	$('#menu_lv').empty()
@@ -81,6 +103,9 @@ $(document).ready(function(){
 //				$("#chSaveDiv").show();
 //			}
 		//alert (localStorage.synced)
+		//Nazma Azam 2019-07-25 start
+		ppe_show();
+		//Nazma Azam 2019-07-25 end
 		$.afui.loadContent("#pageHome",true,true,'right');
 		
 	}
@@ -379,7 +404,7 @@ function lafarge_app() {
 	
 	
 	//Nazma Azam 2019-07-25 start
-	//var  apipath_base_photo_dm='http://127.0.0.1:8000/lafarge/syncmobile_lafarge/dmpath?CID='+localStorage.cid +'&HTTPPASS=e99business321cba'
+	//var  apipath_base_photo_dm='http://127.0.0.1:8000/lfg_gatein/syncmobile_lafarge_new/dmpath?CID='+localStorage.cid +'&HTTPPASS=e99business321cba'
 	var  apipath_base_photo_dm='http://w02.yeapps.com/lfggatein/syncmobile_lafarge_new/dmpath?CID='+localStorage.cid +'&HTTPPASS=e99business321cba'			 	 
 	//Nazma Azam 2019-07-25 end
 	//alert(apipath_base_photo_dm)
@@ -821,6 +846,13 @@ function get_out_submit() {
 				    $("#getOut_drv_name").val('');
 				    $("#getOut_mobile_no").val('');
 				    $("#ppe_out_yn").val('');
+					
+					//Nazma Azam 2019-07-25 start
+					
+					$("#ppe_own").val('');
+					$("#ppe_note").html('');
+
+					//Nazma Azam 2019-07-25 end
 
 					$("#error_getout_page").html()
 					
@@ -1083,6 +1115,43 @@ function exit_page() {
 
 
 // ======================== shima end ================
+
+//Nazma Azam 2019-07-25 start
+
+function ppe_hide() {
+	
+	//alert($("#ppe_own").val())
+	
+	if( $("#ppe_own").val() == 'yes'){
+	//alert('1')
+	$("#div_ppe_note").hide();
+	}
+
+
+	
+	}
+
+
+
+function ppe_show() {
+	
+	var ppe_own_val= ($('#ppe_own').is(':checked') ? 1 : 0);
+	//var ppe_own_val=$("#ppe_own").val()
+	//alert( ppe_own_val)
+	if( ppe_own_val== '1'){
+	//alert('1')
+	$("#div_ppe_note").hide();
+	}
+
+	
+	
+	if( ppe_own_val== '0'){
+	//alert('2')	
+	$("#div_ppe_note").show();
+	}
+}
+
+//Nazma Azam 2019-07-25 end
 
 
 
